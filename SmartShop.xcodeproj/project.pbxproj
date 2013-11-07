@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F1102DB6182AE378000B3677 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1102DB5182AE378000B3677 /* MapViewController.m */; };
 		F19B99CD1828F54400D9183D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F19B99CC1828F54400D9183D /* Foundation.framework */; };
 		F19B99CF1828F54400D9183D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F19B99CE1828F54400D9183D /* CoreGraphics.framework */; };
 		F19B99D11828F54400D9183D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F19B99D01828F54400D9183D /* UIKit.framework */; };
@@ -22,6 +23,9 @@
 		F19B99F11828F54400D9183D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F19B99D01828F54400D9183D /* UIKit.framework */; };
 		F19B99F91828F54400D9183D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F19B99F71828F54400D9183D /* InfoPlist.strings */; };
 		F19B99FB1828F54400D9183D /* SmartShopTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F19B99FA1828F54400D9183D /* SmartShopTests.m */; };
+		F1C226F81828FB6D001AB3E8 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1C226F71828FB6D001AB3E8 /* MapKit.framework */; };
+		F1C226FA1828FB75001AB3E8 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1C226F91828FB75001AB3E8 /* CoreLocation.framework */; };
+		F1C226FD1828FDC8001AB3E8 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1C226FC1828FDC8001AB3E8 /* RootViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +39,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F1102DB4182AE378000B3677 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
+		F1102DB5182AE378000B3677 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		F19B99C91828F54400D9183D /* SmartShop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartShop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F19B99CC1828F54400D9183D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F19B99CE1828F54400D9183D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -55,6 +61,10 @@
 		F19B99F61828F54400D9183D /* SmartShopTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SmartShopTests-Info.plist"; sourceTree = "<group>"; };
 		F19B99F81828F54400D9183D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F19B99FA1828F54400D9183D /* SmartShopTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SmartShopTests.m; sourceTree = "<group>"; };
+		F1C226F71828FB6D001AB3E8 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		F1C226F91828FB75001AB3E8 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		F1C226FB1828FDC8001AB3E8 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		F1C226FC1828FDC8001AB3E8 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +72,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1C226FA1828FB75001AB3E8 /* CoreLocation.framework in Frameworks */,
+				F1C226F81828FB6D001AB3E8 /* MapKit.framework in Frameworks */,
 				F19B99CF1828F54400D9183D /* CoreGraphics.framework in Frameworks */,
 				F19B99D11828F54400D9183D /* UIKit.framework in Frameworks */,
 				F19B99CD1828F54400D9183D /* Foundation.framework in Frameworks */,
@@ -103,6 +115,8 @@
 		F19B99CB1828F54400D9183D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F1C226F91828FB75001AB3E8 /* CoreLocation.framework */,
+				F1C226F71828FB6D001AB3E8 /* MapKit.framework */,
 				F19B99CC1828F54400D9183D /* Foundation.framework */,
 				F19B99CE1828F54400D9183D /* CoreGraphics.framework */,
 				F19B99D01828F54400D9183D /* UIKit.framework */,
@@ -120,6 +134,10 @@
 				F19B99E11828F54400D9183D /* Main_iPad.storyboard */,
 				F19B99E41828F54400D9183D /* ViewController.h */,
 				F19B99E51828F54400D9183D /* ViewController.m */,
+				F1C226FB1828FDC8001AB3E8 /* RootViewController.h */,
+				F1C226FC1828FDC8001AB3E8 /* RootViewController.m */,
+				F1102DB4182AE378000B3677 /* MapViewController.h */,
+				F1102DB5182AE378000B3677 /* MapViewController.m */,
 				F19B99E71828F54400D9183D /* Images.xcassets */,
 				F19B99D31828F54400D9183D /* Supporting Files */,
 			);
@@ -255,6 +273,8 @@
 			files = (
 				F19B99E61828F54400D9183D /* ViewController.m in Sources */,
 				F19B99DD1828F54400D9183D /* AppDelegate.m in Sources */,
+				F1102DB6182AE378000B3677 /* MapViewController.m in Sources */,
+				F1C226FD1828FDC8001AB3E8 /* RootViewController.m in Sources */,
 				F19B99D91828F54400D9183D /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -474,6 +494,7 @@
 				F19B9A001828F54400D9183D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F19B9A011828F54400D9183D /* Build configuration list for PBXNativeTarget "SmartShopTests" */ = {
 			isa = XCConfigurationList;
@@ -482,6 +503,7 @@
 				F19B9A031828F54400D9183D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
