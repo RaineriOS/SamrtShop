@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		F1102DB6182AE378000B3677 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1102DB5182AE378000B3677 /* MapViewController.m */; };
+		F17B40EB182F82CD007C1E92 /* Shop.m in Sources */ = {isa = PBXBuildFile; fileRef = F17B40EA182F82CD007C1E92 /* Shop.m */; };
 		F19B99CD1828F54400D9183D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F19B99CC1828F54400D9183D /* Foundation.framework */; };
 		F19B99CF1828F54400D9183D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F19B99CE1828F54400D9183D /* CoreGraphics.framework */; };
 		F19B99D11828F54400D9183D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F19B99D01828F54400D9183D /* UIKit.framework */; };
@@ -26,6 +27,12 @@
 		F1C226F81828FB6D001AB3E8 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1C226F71828FB6D001AB3E8 /* MapKit.framework */; };
 		F1C226FA1828FB75001AB3E8 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1C226F91828FB75001AB3E8 /* CoreLocation.framework */; };
 		F1C226FD1828FDC8001AB3E8 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1C226FC1828FDC8001AB3E8 /* RootViewController.m */; };
+		F1D1BDE4182FC53F0007094F /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = F1D1BDE3182FC53F0007094F /* Photo.m */; };
+		F1D1BDE7182FD3790007094F /* NSMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = F1D1BDE6182FD3790007094F /* NSMapping.m */; };
+		F1D1BDEA182FFE730007094F /* Route.m in Sources */ = {isa = PBXBuildFile; fileRef = F1D1BDE9182FFE730007094F /* Route.m */; };
+		F1D1BDED183000230007094F /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = F1D1BDEC183000230007094F /* Location.m */; };
+		F1D1BDF0183000D60007094F /* Leg.m in Sources */ = {isa = PBXBuildFile; fileRef = F1D1BDEF183000D60007094F /* Leg.m */; };
+		F1D1BDF3183008A20007094F /* Step.m in Sources */ = {isa = PBXBuildFile; fileRef = F1D1BDF2183008A20007094F /* Step.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +48,8 @@
 /* Begin PBXFileReference section */
 		F1102DB4182AE378000B3677 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 		F1102DB5182AE378000B3677 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
+		F17B40E9182F82CD007C1E92 /* Shop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Shop.h; sourceTree = "<group>"; };
+		F17B40EA182F82CD007C1E92 /* Shop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Shop.m; sourceTree = "<group>"; };
 		F19B99C91828F54400D9183D /* SmartShop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartShop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F19B99CC1828F54400D9183D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F19B99CE1828F54400D9183D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -65,6 +74,18 @@
 		F1C226F91828FB75001AB3E8 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		F1C226FB1828FDC8001AB3E8 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		F1C226FC1828FDC8001AB3E8 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		F1D1BDE2182FC53F0007094F /* Photo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Photo.h; sourceTree = "<group>"; };
+		F1D1BDE3182FC53F0007094F /* Photo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Photo.m; sourceTree = "<group>"; };
+		F1D1BDE5182FD3790007094F /* NSMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSMapping.h; sourceTree = "<group>"; };
+		F1D1BDE6182FD3790007094F /* NSMapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSMapping.m; sourceTree = "<group>"; };
+		F1D1BDE8182FFE730007094F /* Route.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Route.h; sourceTree = "<group>"; };
+		F1D1BDE9182FFE730007094F /* Route.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Route.m; sourceTree = "<group>"; };
+		F1D1BDEB183000230007094F /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Location.h; sourceTree = "<group>"; };
+		F1D1BDEC183000230007094F /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Location.m; sourceTree = "<group>"; };
+		F1D1BDEE183000D60007094F /* Leg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Leg.h; sourceTree = "<group>"; };
+		F1D1BDEF183000D60007094F /* Leg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Leg.m; sourceTree = "<group>"; };
+		F1D1BDF1183008A20007094F /* Step.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Step.h; sourceTree = "<group>"; };
+		F1D1BDF2183008A20007094F /* Step.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Step.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +114,40 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F17B40EC182F82D9007C1E92 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F17B40E9182F82CD007C1E92 /* Shop.h */,
+				F17B40EA182F82CD007C1E92 /* Shop.m */,
+				F1D1BDE2182FC53F0007094F /* Photo.h */,
+				F1D1BDE3182FC53F0007094F /* Photo.m */,
+				F1D1BDE8182FFE730007094F /* Route.h */,
+				F1D1BDE9182FFE730007094F /* Route.m */,
+				F1D1BDEE183000D60007094F /* Leg.h */,
+				F1D1BDEF183000D60007094F /* Leg.m */,
+				F1D1BDF1183008A20007094F /* Step.h */,
+				F1D1BDF2183008A20007094F /* Step.m */,
+				F1D1BDEB183000230007094F /* Location.h */,
+				F1D1BDEC183000230007094F /* Location.m */,
+				F1D1BDE5182FD3790007094F /* NSMapping.h */,
+				F1D1BDE6182FD3790007094F /* NSMapping.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		F17B40ED182F82ED007C1E92 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				F19B99E41828F54400D9183D /* ViewController.h */,
+				F19B99E51828F54400D9183D /* ViewController.m */,
+				F1C226FB1828FDC8001AB3E8 /* RootViewController.h */,
+				F1C226FC1828FDC8001AB3E8 /* RootViewController.m */,
+				F1102DB4182AE378000B3677 /* MapViewController.h */,
+				F1102DB5182AE378000B3677 /* MapViewController.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
 		F19B99C01828F54400D9183D = {
 			isa = PBXGroup;
 			children = (
@@ -132,12 +187,8 @@
 				F19B99DC1828F54400D9183D /* AppDelegate.m */,
 				F19B99DE1828F54400D9183D /* Main_iPhone.storyboard */,
 				F19B99E11828F54400D9183D /* Main_iPad.storyboard */,
-				F19B99E41828F54400D9183D /* ViewController.h */,
-				F19B99E51828F54400D9183D /* ViewController.m */,
-				F1C226FB1828FDC8001AB3E8 /* RootViewController.h */,
-				F1C226FC1828FDC8001AB3E8 /* RootViewController.m */,
-				F1102DB4182AE378000B3677 /* MapViewController.h */,
-				F1102DB5182AE378000B3677 /* MapViewController.m */,
+				F17B40ED182F82ED007C1E92 /* Controller */,
+				F17B40EC182F82D9007C1E92 /* Model */,
 				F19B99E71828F54400D9183D /* Images.xcassets */,
 				F19B99D31828F54400D9183D /* Supporting Files */,
 			);
@@ -271,11 +322,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1D1BDF0183000D60007094F /* Leg.m in Sources */,
+				F1D1BDF3183008A20007094F /* Step.m in Sources */,
+				F1D1BDE4182FC53F0007094F /* Photo.m in Sources */,
 				F19B99E61828F54400D9183D /* ViewController.m in Sources */,
 				F19B99DD1828F54400D9183D /* AppDelegate.m in Sources */,
+				F1D1BDEA182FFE730007094F /* Route.m in Sources */,
+				F1D1BDE7182FD3790007094F /* NSMapping.m in Sources */,
 				F1102DB6182AE378000B3677 /* MapViewController.m in Sources */,
+				F1D1BDED183000230007094F /* Location.m in Sources */,
 				F1C226FD1828FDC8001AB3E8 /* RootViewController.m in Sources */,
 				F19B99D91828F54400D9183D /* main.m in Sources */,
+				F17B40EB182F82CD007C1E92 /* Shop.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

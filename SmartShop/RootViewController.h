@@ -12,7 +12,6 @@
 @interface RootViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
 
 @property (strong, nonatomic) NSMutableArray *shopsArr;
-@property (strong, nonatomic) MKMapView *mapView;
 
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
