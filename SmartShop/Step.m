@@ -11,12 +11,20 @@
 @implementation Step
 
 @synthesize travelMode;
+@synthesize distance;
+@synthesize duration;
+@synthesize htmlInstructions;
+@synthesize maneuver;
 @synthesize startLocation;
 @synthesize endLocation;
 
 -(NSString *)description
 {
-    return [[NSString alloc] initWithFormat:@"%@ %@ %@", travelMode, startLocation, endLocation];
+    return [[NSString alloc] initWithFormat:@"%@ %@ %@ %@ %@ %@ %@",
+            travelMode, startLocation,
+            endLocation, distance,
+            duration, htmlInstructions,
+            maneuver];
 }
 
 @end

@@ -12,6 +12,10 @@
 @interface Step : NSObject
 
 @property (strong, nonatomic) NSString *travelMode;
+@property (strong, nonatomic) NSString *distance;
+@property (strong, nonatomic) NSString *duration;
+@property (strong, nonatomic) NSString *htmlInstructions;
+@property (strong, nonatomic) NSString *maneuver;
 @property (strong, nonatomic) Location *startLocation;
 @property (strong, nonatomic) Location *endLocation;
 

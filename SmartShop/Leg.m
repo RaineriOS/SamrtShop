@@ -12,6 +12,8 @@
 
 @synthesize startAddress;
 @synthesize endAddress;
+@synthesize distance;
+@synthesize duration;
 @synthesize startLocation;
 @synthesize endLocation;
 @synthesize stepsArray;
@@ -19,8 +21,8 @@
 
 -(NSString *)description
 {
-    return [[NSString alloc] initWithFormat:@"%@ --- %@ --- (%@ - %@) %@",
-            startAddress, endAddress, startLocation, endLocation, stepsArray,nil];
+    return [[NSString alloc] initWithFormat:@"%@ --- %@ --- (%@ - %@) --- %@ %@ %@",
+            startAddress, endAddress, startLocation, endLocation, distance, duration, stepsArray,nil];
 }
 
 @end

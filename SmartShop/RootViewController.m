@@ -162,6 +162,11 @@
                 
                 NSDictionary *stepMapping = [[NSDictionary alloc] initWithObjectsAndKeys:
                                              @"travelMode", @"travel_mode",
+                                             @"distance", @"distance.text",
+                                             @"duration", @"duration.text",
+                                             @"htmlInstructions", @"html_instructions",
+                                             @"maneuver", @"maneuver",
+                                             
                                              @{
                                                @"property": @"startLocation", // The name in the class
                                                @"class": [Location class],
@@ -178,6 +183,8 @@
                 NSDictionary *legMapping = [[NSDictionary alloc] initWithObjectsAndKeys:
                                             @"endAddress", @"end_address",
                                             @"startAddress", @"start_address",
+                                            @"distance", @"distance.text",
+                                            @"duration", @"duration.text",
                                             
                                             @{
                                               @"property": @"startLocation", // The name in the class
@@ -211,7 +218,7 @@
                 
                 for (NSDictionary *routeDict in [json objectForKey:@"routes"]) {
                     Route *newRoute = [NSMapping makeObject:[Route class] WithMapping:reouteMapping fromJSON:routeDict];
-                    // NSLog(@"%@", newRoute);
+                    NSLog(@"%@", newRoute);
                     
                     // Location *customStartLocation = [[newRoute.legsArray firstObject] startLocation];
                     // Location *customEndLocation = [[newRoute.legsArray firstObject] endLocation];
@@ -225,7 +232,7 @@
                         // [self.routes addObject:step.startLocation];
                         // [self.routes addObject:step.endLocation];
                     }
-                    NSLog(@"%@", mkRouteSteps);
+                    // NSLog(@"%@", mkRouteSteps);
                     [self.routes addObject:mkRouteSteps];
                 }
             }];

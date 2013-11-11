@@ -13,6 +13,8 @@
 
 @property (strong, nonatomic) NSString *startAddress;
 @property (strong, nonatomic) NSString *endAddress;
+@property (strong, nonatomic) NSString *distance;
+@property (strong, nonatomic) NSString *duration;
 @property (strong, nonatomic) NSMutableArray *stepsArray;
 
 @property (strong, nonatomic) Location *startLocation;
