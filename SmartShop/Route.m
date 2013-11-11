@@ -12,11 +12,12 @@
 
 @synthesize copyrights;
 @synthesize warnings;
+@synthesize overviewPolylinePointsEncoded;
 @synthesize legsArray;
 
 -(NSString *)description
 {
-    return [[NSString alloc] initWithFormat:@"%@ %@ %@", copyrights, warnings, legsArray, nil];
+    return [[NSString alloc] initWithFormat:@"%@ %@ %@ %@", copyrights, warnings, legsArray, overviewPolylinePointsEncoded, nil];
 }
 
 @end

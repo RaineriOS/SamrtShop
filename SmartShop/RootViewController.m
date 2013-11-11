@@ -12,6 +12,7 @@
 #import <CoreLocation/CoreLocation.h>
 
 #import "MapViewController.h"
+#import "DirectionsCell.h"
 #import "Shop.h"
 #import "Photo.h"
 #import "Route.h"
@@ -127,6 +128,129 @@
     }];
 }
 
+-(void) getDirectionsFrom:(CLLocationCoordinate2D)origin to:(CLLocationCoordinate2D) dest forCell:(DirectionsCell *)cell
+{
+    // The address entered
+    NSOperationQueue *downloadQueue = [[NSOperationQueue alloc] init];
+    downloadQueue.name = @"Download Queue";
+    downloadQueue.maxConcurrentOperationCount = 5;
+    [downloadQueue addOperationWithBlock:^{
+        // Send a synchronous request
+        NSString *jsonPath = [NSString stringWithFormat:@"http://maps.googleapis.com/maps/api/directions/json?origin=%f,%f&destination=%f,%f&sensor=false&avoid=highways&mode=walking",
+                              origin.latitude, origin.longitude,
+                              dest.latitude, dest.longitude
+                              ];
+        NSURLRequest *urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:jsonPath]];
+        NSURLResponse *returingResponse = nil;
+        NSError *connError = nil;
+        NSData * responseData = [NSURLConnection sendSynchronousRequest:urlRequest
+                                                      returningResponse:&returingResponse
+                                                                  error:&connError];
+        if (connError == nil)
+        {
+            //parse out the json data
+            NSError* error;
+            NSDictionary* json = [NSJSONSerialization
+                                  JSONObjectWithData:responseData //1
+                                  options:kNilOptions
+                                  error:&error];
+            [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                
+                NSDictionary *locationMapping = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                                 @"lat", @"lat",
+                                                 @"lng", @"lng",
+                                                 nil];
+                
+                NSDictionary *stepMapping = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                             @"travelMode", @"travel_mode",
+                                             @"distance", @"distance.text",
+                                             @"duration", @"duration.text",
+                                             @"htmlInstructions", @"html_instructions",
+                                             @"maneuver", @"maneuver",
+                                             
+                                             @{
+                                               @"property": @"startLocation", // The name in the class
+                                               @"class": [Location class],
+                                               @"mapping": locationMapping
+                                               }, @"start_location",
+                                             @{
+                                               @"property": @"endLocation", // The name in the class
+                                               @"class": [Location class],
+                                               @"mapping": locationMapping
+                                               }, @"end_location",
+                                             
+                                             nil];
+                
+                NSDictionary *legMapping = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                            @"endAddress", @"end_address",
+                                            @"startAddress", @"start_address",
+                                            @"distance", @"distance.text",
+                                            @"duration", @"duration.text",
+                                            
+                                            @{
+                                              @"property": @"startLocation", // The name in the class
+                                              @"class": [Location class],
+                                              @"mapping": locationMapping
+                                              }, @"start_location",
+                                            
+                                            @{
+                                              @"property": @"endLocation", // The name in the class
+                                              @"class": [Location class],
+                                              @"mapping": locationMapping
+                                              }, @"end_location",
+                                            
+                                            @{
+                                              @"property": @"stepsArray",
+                                              @"class": [Step class],
+                                              @"mapping": stepMapping
+                                              }, @"steps",
+                                            
+                                            nil];
+                
+                NSDictionary *routeMapping = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                               @"copyrights", @"copytights",
+                                              @"warnings", @"warnings",
+                                              @"overviewPolylinePointsEncoded", @"overview_polyline.points",
+                                               @{
+                                                 @"property": @"legsArray",
+                                                 @"class": [Leg class],
+                                                 @"mapping":legMapping
+                                                 }, @"legs",
+                                               nil];
+                
+                for (NSDictionary *routeDict in [json objectForKey:@"routes"]) {
+                    Route *newRoute = [NSMapping makeObject:[Route class] WithMapping:routeMapping fromJSON:routeDict];
+                    Leg *leg = [newRoute.legsArray lastObject];
+                    cell.originLabel.text = leg.startAddress;
+                    cell.destinationLabel.text = leg.endAddress;
+                    cell.durationLabel.text = leg.duration;
+                    cell.distanceLabel.text = leg.distance;
+                    [self.tableView reloadData];
+                    NSLog(@"%@", newRoute);
+                    
+                    // Location *customStartLocation = [[newRoute.legsArray firstObject] startLocation];
+                    // Location *customEndLocation = [[newRoute.legsArray firstObject] endLocation];
+                    // [self.routes addObject:customStartLocation];
+                    // [self.routes addObject:customEndLocation];
+                    
+                    NSMutableArray *mkRouteSteps = [[NSMutableArray alloc] init];
+                    for (Step *step in [[newRoute.legsArray firstObject] stepsArray]) {
+                        [mkRouteSteps addObject:step.startLocation];
+                        [mkRouteSteps addObject:step.endLocation];
+                        // [self.routes addObject:step.startLocation];
+                        // [self.routes addObject:step.endLocation];
+                    }
+                    // NSLog(@"%@", mkRouteSteps);
+                    
+                    MKPolyline *line = [MapViewController polylineWithEncodedString:newRoute.overviewPolylinePointsEncoded];
+                    // [self.routes addObject:mkRouteSteps];
+                    [self.routes addObject:line];
+                }
+            }];
+        }
+    }];
+}
+
 -(void) getDirectionsFrom:(CLLocationCoordinate2D)origin to:(CLLocationCoordinate2D) dest
 {
     // The address entered
@@ -206,18 +330,19 @@
                                             
                                             nil];
                 
-                NSDictionary *reouteMapping = [[NSDictionary alloc] initWithObjectsAndKeys:
-                                          @"copyrights", @"copytights",
-                                          @"warnings", @"warnings",
-                                          @{
-                                            @"property": @"legsArray",
-                                            @"class": [Leg class],
-                                            @"mapping":legMapping
-                                            }, @"legs",
-                                          nil];
+                NSDictionary *routeMapping = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                               @"copyrights", @"copytights",
+                                              @"warnings", @"warnings",
+                                              @"overviewPolylinePointsEncoded", @"overview_polyline.points",
+                                               @{
+                                                 @"property": @"legsArray",
+                                                 @"class": [Leg class],
+                                                 @"mapping":legMapping
+                                                 }, @"legs",
+                                               nil];
                 
                 for (NSDictionary *routeDict in [json objectForKey:@"routes"]) {
-                    Route *newRoute = [NSMapping makeObject:[Route class] WithMapping:reouteMapping fromJSON:routeDict];
+                    Route *newRoute = [NSMapping makeObject:[Route class] WithMapping:routeMapping fromJSON:routeDict];
                     NSLog(@"%@", newRoute);
                     
                     // Location *customStartLocation = [[newRoute.legsArray firstObject] startLocation];
@@ -271,20 +396,22 @@
 
 -(UITableViewCell *)tableView:(UITableView *)localTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *cellReusableCellId = @"Cell";
-    UITableViewCell *cell = [localTableView dequeueReusableCellWithIdentifier:cellReusableCellId];
+    static NSString *cellReusableCellId = @"DirectionsCell";
+    DirectionsCell *cell = [localTableView dequeueReusableCellWithIdentifier:cellReusableCellId];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc]
+        cell = [[DirectionsCell alloc]
                 initWithStyle:UITableViewCellStyleDefault
                 reuseIdentifier:cellReusableCellId];
     }
     Shop *shop = [shopsArr objectAtIndex:indexPath.row];
-    cell.textLabel.text = shop.SName;
+    // cell.textLabel.text = shop.SName;
+    cell.nameLabel.text = shop.SName;
     
     double lat = shop.location.lat;
     double lng = shop.location.lng;
     CLLocationCoordinate2D dest = CLLocationCoordinate2DMake(lat, lng);
-    [self getDirectionsFrom:self.origin to:dest];
+    // [self getDirectionsFrom:self.origin to:dest];
+    [self getDirectionsFrom:self.origin to:dest forCell:cell];
     
     return cell;
 }
@@ -292,20 +419,6 @@
 #pragma mark - UITableViewDelegate
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"%i", indexPath.row);
-    // NSLog(@"%@", [shopsArr objectAtIndex:indexPath.row]);
-    // NSDictionary *shop = [shopsArr objectAtIndex:indexPath.row];
-    
-    // show the location
-    // MKPointAnnotation *annotationView = [[MKPointAnnotation alloc] init];
-    
-    // double lat = [[[[shop objectForKey:@"geometry"] objectForKey:@"location"] objectForKey:@"lat"] doubleValue];
-    // double lng = [[[[shop objectForKey:@"geometry"] objectForKey:@"location"] objectForKey:@"lng"] doubleValue];
-    
-    // annotationView.coordinate = CLLocationCoordinate2DMake(lat, lng);
-    
-    // dest = annotationView.coordinate;
-    // [self getDirections];
 }
 
 #pragma mark - UITextFieldDelegate

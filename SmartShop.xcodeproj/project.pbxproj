@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F10BB56F1830DA94006348EC /* DirectionsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F10BB56E1830DA94006348EC /* DirectionsCell.m */; };
 		F1102DB6182AE378000B3677 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1102DB5182AE378000B3677 /* MapViewController.m */; };
 		F17B40EB182F82CD007C1E92 /* Shop.m in Sources */ = {isa = PBXBuildFile; fileRef = F17B40EA182F82CD007C1E92 /* Shop.m */; };
 		F19B99CD1828F54400D9183D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F19B99CC1828F54400D9183D /* Foundation.framework */; };
@@ -46,6 +47,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F10BB56D1830DA94006348EC /* DirectionsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DirectionsCell.h; sourceTree = "<group>"; };
+		F10BB56E1830DA94006348EC /* DirectionsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DirectionsCell.m; sourceTree = "<group>"; };
 		F1102DB4182AE378000B3677 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 		F1102DB5182AE378000B3677 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		F17B40E9182F82CD007C1E92 /* Shop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Shop.h; sourceTree = "<group>"; };
@@ -142,6 +145,8 @@
 				F19B99E51828F54400D9183D /* ViewController.m */,
 				F1C226FB1828FDC8001AB3E8 /* RootViewController.h */,
 				F1C226FC1828FDC8001AB3E8 /* RootViewController.m */,
+				F10BB56D1830DA94006348EC /* DirectionsCell.h */,
+				F10BB56E1830DA94006348EC /* DirectionsCell.m */,
 				F1102DB4182AE378000B3677 /* MapViewController.h */,
 				F1102DB5182AE378000B3677 /* MapViewController.m */,
 			);
@@ -324,6 +329,7 @@
 			files = (
 				F1D1BDF0183000D60007094F /* Leg.m in Sources */,
 				F1D1BDF3183008A20007094F /* Step.m in Sources */,
+				F10BB56F1830DA94006348EC /* DirectionsCell.m in Sources */,
 				F1D1BDE4182FC53F0007094F /* Photo.m in Sources */,
 				F19B99E61828F54400D9183D /* ViewController.m in Sources */,
 				F19B99DD1828F54400D9183D /* AppDelegate.m in Sources */,

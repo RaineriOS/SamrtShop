@@ -12,6 +12,7 @@
 
 @property (strong, nonatomic) NSString *copyrights;
 @property (strong, nonatomic) NSArray *warnings;
+@property (strong, nonatomic) NSString *overviewPolylinePointsEncoded;
 @property (strong, nonatomic) NSArray *legsArray;
 
 @end
