@@ -128,9 +128,13 @@
     }];
 }
 
--(void) appleGetDirectionsFrom:(CLLocationCoordinate2D)origin to:(CLLocationCoordinate2D)dest
+-(void) appleGetDirectionsFrom:(CLLocationCoordinate2D)origin to:(CLLocationCoordinate2D)dest completionBlock:(void (^)(MKDirectionsResponse *response))block
 {
-    MKPlacemark *source = [[MKPlacemark alloc]initWithCoordinate:origin addressDictionary:[NSDictionary dictionaryWithObjectsAndKeys:@"",@"", nil] ];
+    MKPlacemark *source = [[MKPlacemark alloc]
+                           initWithCoordinate:origin
+                           addressDictionary:[NSDictionary dictionaryWithObjectsAndKeys:@"",@"", nil] ];
+    
+ 
     
     MKMapItem *srcMapItem = [[MKMapItem alloc]initWithPlacemark:source];
     [srcMapItem setName:@""];
@@ -147,9 +151,28 @@
     
     MKDirections *direction = [[MKDirections alloc]initWithRequest:request];
     
+    [self.routes removeAllObjects];
     [direction calculateDirectionsWithCompletionHandler:^(MKDirectionsResponse *response, NSError *error) {
+        [[[CLGeocoder alloc] init] reverseGeocodeLocation:source.location completionHandler:
+         ^(NSArray* placemarks, NSError* error){
+             if ([placemarks count] > 0)
+             {
+                 response.source.name = [[[placemarks lastObject] addressDictionary] objectForKey:@"Name"];
+                 block(response);
+             }
+         }];
+        
+        [[[CLGeocoder alloc] init] reverseGeocodeLocation:destination.location completionHandler:
+         ^(NSArray* placemarks, NSError* error){
+             if ([placemarks count] > 0)
+             {
+                 response.destination.name = [[[placemarks lastObject] addressDictionary] objectForKey:@"Name"];
+                 block(response);
+             }
+         }];
         
         NSLog(@"response = %@",response);
+        block(response);
         NSArray *arrRoutes = [response routes];
         [self.routes addObjectsFromArray:arrRoutes];
         /*
@@ -319,6 +342,7 @@
         self.currentPointAnnotation = annotationView;
         
         MapViewController *mapVC = [segue destinationViewController];
+        [mapVC removeOverlays];
         mapVC.locationArray = self.routes;
         [mapVC setPointAnnotation:self.currentPointAnnotation];
     }
@@ -349,7 +373,13 @@
     double lng = shop.location.lng;
     CLLocationCoordinate2D dest = CLLocationCoordinate2DMake(lat, lng);
     // [self getDirectionsFrom:self.origin to:dest];
-    [self appleGetDirectionsFrom:self.origin to:dest];
+    [self appleGetDirectionsFrom:self.origin to:dest completionBlock:^(MKDirectionsResponse *response){
+        MKRoute *route = [[response routes] lastObject];
+        cell.originLabel.text = response.source.name;
+        cell.destinationLabel.text = response.destination.name;
+        cell.distanceLabel.text = [[NSString alloc] initWithFormat:@"%0.2f m", route.distance, nil];
+        cell.durationLabel.text = [[NSString alloc] initWithFormat:@"%0.0f minutes", route.expectedTravelTime/60, nil];
+    }];
     //[self getDirectionsFrom:self.origin to:dest forCell:cell];
     
     return cell;

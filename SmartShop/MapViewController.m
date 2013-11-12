@@ -17,6 +17,11 @@
 @end
 
 @implementation MapViewController
+{
+    int index;
+    NSArray *colors;
+    NSMutableArray *overlays;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -30,20 +35,25 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    [self.mapView setShowsUserLocation:YES];
+    index = 0;
+    colors = @[[UIColor blackColor], [UIColor blueColor], [UIColor redColor], [UIColor redColor]];
+    overlays = [[NSMutableArray alloc] init];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 -(void)placeAnnotationOnMap:(MKPointAnnotation *)annotationView
 {
     [self.mapView addAnnotation:(id)annotationView];
     
-    MKMapCamera *camera = [MKMapCamera  cameraLookingAtCenterCoordinate:annotationView.coordinate fromEyeCoordinate:annotationView.coordinate eyeAltitude:70000.0];
+    MKMapCamera *camera = [MKMapCamera
+                           cameraLookingAtCenterCoordinate:annotationView.coordinate
+                           fromEyeCoordinate:annotationView.coordinate
+                           eyeAltitude:70000.0];
     
     [UIView animateWithDuration:1.0 animations:^{
         [self.mapView setCamera:camera];
@@ -54,36 +64,9 @@
 {
     [super viewWillAppear:animated];
     
-    /*
-    NSMutableArray *clAllAndReverseLocationArray = [[NSMutableArray alloc] init];
-    for (NSMutableArray *newRoute in self.locationArray) {
-        
-        NSMutableArray *clLocationArray = [[NSMutableArray alloc] init];
-        for (Location *location in newRoute) {
-            CLLocation *clLocation = [[CLLocation alloc]
-                                      initWithLatitude:location.lat
-                                      longitude:location.lng];
-            [clLocationArray addObject:clLocation];
-        }
-        [clAllAndReverseLocationArray addObjectsFromArray:clLocationArray];
-        // reverse array
-        NSMutableArray *array = [NSMutableArray arrayWithCapacity:[clLocationArray count]];
-        NSEnumerator *enumerator = [clLocationArray reverseObjectEnumerator];
-        for (id element in enumerator) {
-            [array addObject:element];
-        }
-        [clAllAndReverseLocationArray addObjectsFromArray:array];
-    }
-    [self drawLineWithLocationArray:clAllAndReverseLocationArray];
-     */
-    
-    
-    NSLog(@"%i", [self.locationArray count
-                  ]);
     [self.locationArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         
         MKRoute *rout = obj;
-        
         
         MKPolyline *line = [rout polyline];
         //self.routeLine = line;
@@ -100,50 +83,12 @@
             // NSLog(@"Rout Distance : %f",[obj distance]);
         // }];
     }];
-    /*
-    for (MKPolyline *line in self.locationArray) {
-        self.routeLine = line;
-        [self.mapView setVisibleMapRect:[self.routeLine boundingMapRect]];
-        [self.mapView addOverlay:self.routeLine];
-    }
-     */
     
     [self placeAnnotationOnMap:self.pointAnnotation];
 }
 
-#pragma mark -
 
-- (void)drawTestLine
-{
-    // test code : draw line between Beijing and Hangzhou
-    CLLocation *location0 = [[CLLocation alloc] initWithLatitude:39.954245 longitude:116.312455];
-    CLLocation *location1 = [[CLLocation alloc] initWithLatitude:30.247871 longitude:120.127683];
-    CLLocation *location2 = [[CLLocation alloc] initWithLatitude:32.247871 longitude:121.127683];
-    NSArray *array = [NSArray arrayWithObjects:location0, location1, location2, nil];
-    [self drawLineWithLocationArray:array];
-}
-
-- (void)drawLineWithLocationArray:(NSArray *)locationArray
-{
-    int pointCount = [locationArray count];
-    CLLocationCoordinate2D *coordinateArray = (CLLocationCoordinate2D *)malloc(pointCount * sizeof(CLLocationCoordinate2D));
-    
-    for (int i = 0; i < pointCount; ++i) {
-        CLLocation *location = [locationArray objectAtIndex:i];
-        coordinateArray[i] = [location coordinate];
-    }
-    
-    [self.mapView removeOverlay:self.routeLine];
-    
-    self.routeLine = [MKPolyline polylineWithCoordinates:coordinateArray count:pointCount];
-    [self.mapView setVisibleMapRect:[self.routeLine boundingMapRect]];
-    [self.mapView addOverlay:self.routeLine];
-    
-    free(coordinateArray);
-    coordinateArray = NULL;
-}
-
-#pragma mark - MKMapViewDelegate
+#pragma mark - MKDelegate for rendering paths
 
 -(MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id<MKOverlay>)overlay
 {
@@ -151,34 +96,22 @@
         MKPolylineRenderer *renderer = [[MKPolylineRenderer alloc]
                                         initWithPolyline:(MKPolyline*)overlay];
         renderer.strokeColor = [UIColor redColor];
+        renderer.strokeColor = [colors objectAtIndex:index];
+        index = index == 3 ? 0 : index+1;
         renderer.lineWidth = 1;
+        [overlays addObject:renderer];
         return renderer;
     }
     return nil;
 }
 
-/*
-- (MKOverlayView *)mapView:(MKMapView *)mapView viewForOverlay:(id<MKOverlay>)overlay
+-(void)removeOverlays
 {
-    MKPolylineView *view = [[MKPolylineView alloc] initWithPolyline:overlay];
-    view.fillColor = [UIColor redColor];
-    view.strokeColor = [UIColor redColor];
-    view.lineWidth = 5;
-    return view;
-    if(overlay == self.routeLine) {
-        if(nil == self.routeLineView) {
-            self.routeLineView = [[MKPolylineView alloc] initWithPolyline:self.routeLine];
-            self.routeLineView.fillColor = [UIColor redColor];
-            self.routeLineView.strokeColor = [UIColor redColor];
-            self.routeLineView.lineWidth = 5;
-        }
-        return self.routeLineView;
-    }
-    return nil;
+    [self.mapView removeOverlays:overlays];
+    [overlays removeAllObjects];
 }
- */
 
-
+// Google decode the google smoth path
 + (MKPolyline *)polylineWithEncodedString:(NSString *)encodedString
 {
     const char *bytes = [encodedString UTF8String];

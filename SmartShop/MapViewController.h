@@ -16,6 +16,7 @@
 @property (strong, nonatomic) IBOutlet MKMapView *mapView;
 
 -(void) placeAnnotationOnMap:(MKPointAnnotation *)annotationView;
+-(void) removeOverlays;
 + (MKPolyline *)polylineWithEncodedString:(NSString *)encodedString;
 
 @end
