@@ -77,11 +77,36 @@
     [self drawLineWithLocationArray:clAllAndReverseLocationArray];
      */
     
+    
+    NSLog(@"%i", [self.locationArray count
+                  ]);
+    [self.locationArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        
+        MKRoute *rout = obj;
+        
+        
+        MKPolyline *line = [rout polyline];
+        //self.routeLine = line;
+        [self.mapView addOverlay:line];
+        NSLog(@"Rout Name : %@",rout.name);
+        NSLog(@"Total Distance (in Meters) :%f",rout.distance);
+        
+        NSArray *steps = [rout steps];
+        
+        NSLog(@"Total Steps : %d",[steps count]);
+        
+        // [steps enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            // NSLog(@"Rout Instruction : %@",[obj instructions]);
+            // NSLog(@"Rout Distance : %f",[obj distance]);
+        // }];
+    }];
+    /*
     for (MKPolyline *line in self.locationArray) {
         self.routeLine = line;
         [self.mapView setVisibleMapRect:[self.routeLine boundingMapRect]];
         [self.mapView addOverlay:self.routeLine];
     }
+     */
     
     [self placeAnnotationOnMap:self.pointAnnotation];
 }
@@ -120,8 +145,26 @@
 
 #pragma mark - MKMapViewDelegate
 
+-(MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id<MKOverlay>)overlay
+{
+    if ([overlay isKindOfClass:[MKPolyline class]]) {
+        MKPolylineRenderer *renderer = [[MKPolylineRenderer alloc]
+                                        initWithPolyline:(MKPolyline*)overlay];
+        renderer.strokeColor = [UIColor redColor];
+        renderer.lineWidth = 1;
+        return renderer;
+    }
+    return nil;
+}
+
+/*
 - (MKOverlayView *)mapView:(MKMapView *)mapView viewForOverlay:(id<MKOverlay>)overlay
 {
+    MKPolylineView *view = [[MKPolylineView alloc] initWithPolyline:overlay];
+    view.fillColor = [UIColor redColor];
+    view.strokeColor = [UIColor redColor];
+    view.lineWidth = 5;
+    return view;
     if(overlay == self.routeLine) {
         if(nil == self.routeLineView) {
             self.routeLineView = [[MKPolylineView alloc] initWithPolyline:self.routeLine];
@@ -133,6 +176,7 @@
     }
     return nil;
 }
+ */
 
 
 + (MKPolyline *)polylineWithEncodedString:(NSString *)encodedString
