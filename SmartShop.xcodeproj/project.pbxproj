@@ -25,6 +25,9 @@
 		F19B99F11828F54400D9183D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F19B99D01828F54400D9183D /* UIKit.framework */; };
 		F19B99F91828F54400D9183D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F19B99F71828F54400D9183D /* InfoPlist.strings */; };
 		F19B99FB1828F54400D9183D /* SmartShopTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F19B99FA1828F54400D9183D /* SmartShopTests.m */; };
+		F1A8654418329E9C00975F96 /* SocialNetworksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A8654318329E9C00975F96 /* SocialNetworksViewController.m */; };
+		F1A865461832E0D700975F96 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1A865451832E0D700975F96 /* Social.framework */; };
+		F1A865481832E0DC00975F96 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1A865471832E0DC00975F96 /* Accounts.framework */; };
 		F1C226F81828FB6D001AB3E8 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1C226F71828FB6D001AB3E8 /* MapKit.framework */; };
 		F1C226FA1828FB75001AB3E8 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1C226F91828FB75001AB3E8 /* CoreLocation.framework */; };
 		F1C226FD1828FDC8001AB3E8 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1C226FC1828FDC8001AB3E8 /* RootViewController.m */; };
@@ -73,6 +76,10 @@
 		F19B99F61828F54400D9183D /* SmartShopTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SmartShopTests-Info.plist"; sourceTree = "<group>"; };
 		F19B99F81828F54400D9183D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F19B99FA1828F54400D9183D /* SmartShopTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SmartShopTests.m; sourceTree = "<group>"; };
+		F1A8654218329E9C00975F96 /* SocialNetworksViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocialNetworksViewController.h; sourceTree = "<group>"; };
+		F1A8654318329E9C00975F96 /* SocialNetworksViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocialNetworksViewController.m; sourceTree = "<group>"; };
+		F1A865451832E0D700975F96 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		F1A865471832E0DC00975F96 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		F1C226F71828FB6D001AB3E8 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		F1C226F91828FB75001AB3E8 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		F1C226FB1828FDC8001AB3E8 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
@@ -96,6 +103,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1A865481832E0DC00975F96 /* Accounts.framework in Frameworks */,
+				F1A865461832E0D700975F96 /* Social.framework in Frameworks */,
 				F1C226FA1828FB75001AB3E8 /* CoreLocation.framework in Frameworks */,
 				F1C226F81828FB6D001AB3E8 /* MapKit.framework in Frameworks */,
 				F19B99CF1828F54400D9183D /* CoreGraphics.framework in Frameworks */,
@@ -120,20 +129,7 @@
 		F17B40EC182F82D9007C1E92 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				F17B40E9182F82CD007C1E92 /* Shop.h */,
-				F17B40EA182F82CD007C1E92 /* Shop.m */,
-				F1D1BDE2182FC53F0007094F /* Photo.h */,
-				F1D1BDE3182FC53F0007094F /* Photo.m */,
-				F1D1BDE8182FFE730007094F /* Route.h */,
-				F1D1BDE9182FFE730007094F /* Route.m */,
-				F1D1BDEE183000D60007094F /* Leg.h */,
-				F1D1BDEF183000D60007094F /* Leg.m */,
-				F1D1BDF1183008A20007094F /* Step.h */,
-				F1D1BDF2183008A20007094F /* Step.m */,
-				F1D1BDEB183000230007094F /* Location.h */,
-				F1D1BDEC183000230007094F /* Location.m */,
-				F1D1BDE5182FD3790007094F /* NSMapping.h */,
-				F1D1BDE6182FD3790007094F /* NSMapping.m */,
+				F1D1B0E818322FF50075AFC1 /* GoogleAPI */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -141,14 +137,8 @@
 		F17B40ED182F82ED007C1E92 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				F19B99E41828F54400D9183D /* ViewController.h */,
-				F19B99E51828F54400D9183D /* ViewController.m */,
-				F1C226FB1828FDC8001AB3E8 /* RootViewController.h */,
-				F1C226FC1828FDC8001AB3E8 /* RootViewController.m */,
-				F10BB56D1830DA94006348EC /* DirectionsCell.h */,
-				F10BB56E1830DA94006348EC /* DirectionsCell.m */,
-				F1102DB4182AE378000B3677 /* MapViewController.h */,
-				F1102DB5182AE378000B3677 /* MapViewController.m */,
+				F1A8653E18329E3900975F96 /* Social Networks */,
+				F1A8653D18329E2900975F96 /* Find Shops */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -175,6 +165,8 @@
 		F19B99CB1828F54400D9183D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F1A865471832E0DC00975F96 /* Accounts.framework */,
+				F1A865451832E0D700975F96 /* Social.framework */,
 				F1C226F91828FB75001AB3E8 /* CoreLocation.framework */,
 				F1C226F71828FB6D001AB3E8 /* MapKit.framework */,
 				F19B99CC1828F54400D9183D /* Foundation.framework */,
@@ -227,6 +219,51 @@
 				F19B99F71828F54400D9183D /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F1A8653D18329E2900975F96 /* Find Shops */ = {
+			isa = PBXGroup;
+			children = (
+				F19B99E41828F54400D9183D /* ViewController.h */,
+				F19B99E51828F54400D9183D /* ViewController.m */,
+				F1C226FB1828FDC8001AB3E8 /* RootViewController.h */,
+				F1C226FC1828FDC8001AB3E8 /* RootViewController.m */,
+				F10BB56D1830DA94006348EC /* DirectionsCell.h */,
+				F10BB56E1830DA94006348EC /* DirectionsCell.m */,
+				F1102DB4182AE378000B3677 /* MapViewController.h */,
+				F1102DB5182AE378000B3677 /* MapViewController.m */,
+			);
+			name = "Find Shops";
+			sourceTree = "<group>";
+		};
+		F1A8653E18329E3900975F96 /* Social Networks */ = {
+			isa = PBXGroup;
+			children = (
+				F1A8654218329E9C00975F96 /* SocialNetworksViewController.h */,
+				F1A8654318329E9C00975F96 /* SocialNetworksViewController.m */,
+			);
+			name = "Social Networks";
+			sourceTree = "<group>";
+		};
+		F1D1B0E818322FF50075AFC1 /* GoogleAPI */ = {
+			isa = PBXGroup;
+			children = (
+				F17B40E9182F82CD007C1E92 /* Shop.h */,
+				F17B40EA182F82CD007C1E92 /* Shop.m */,
+				F1D1BDE2182FC53F0007094F /* Photo.h */,
+				F1D1BDE3182FC53F0007094F /* Photo.m */,
+				F1D1BDE8182FFE730007094F /* Route.h */,
+				F1D1BDE9182FFE730007094F /* Route.m */,
+				F1D1BDEE183000D60007094F /* Leg.h */,
+				F1D1BDEF183000D60007094F /* Leg.m */,
+				F1D1BDF1183008A20007094F /* Step.h */,
+				F1D1BDF2183008A20007094F /* Step.m */,
+				F1D1BDEB183000230007094F /* Location.h */,
+				F1D1BDEC183000230007094F /* Location.m */,
+				F1D1BDE5182FD3790007094F /* NSMapping.h */,
+				F1D1BDE6182FD3790007094F /* NSMapping.m */,
+			);
+			name = GoogleAPI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -335,6 +372,7 @@
 				F19B99DD1828F54400D9183D /* AppDelegate.m in Sources */,
 				F1D1BDEA182FFE730007094F /* Route.m in Sources */,
 				F1D1BDE7182FD3790007094F /* NSMapping.m in Sources */,
+				F1A8654418329E9C00975F96 /* SocialNetworksViewController.m in Sources */,
 				F1102DB6182AE378000B3677 /* MapViewController.m in Sources */,
 				F1D1BDED183000230007094F /* Location.m in Sources */,
 				F1C226FD1828FDC8001AB3E8 /* RootViewController.m in Sources */,
