@@ -1,0 +1,10 @@
+{
+	"name": "smart-shop",
+		"description": "Smart shop server which records data of people",
+		"version": "0.0.1",
+		"private": true,
+		"dependencies": {
+			"express": "3.x",
+			"sqlite3": "x"
+		}
+}
