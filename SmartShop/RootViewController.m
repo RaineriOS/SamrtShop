@@ -11,9 +11,10 @@
 #import <MapKit/MapKit.h>
 #import <CoreLocation/CoreLocation.h>
 
+#import "LoginViewController.h"
 #import "MapViewController.h"
 #import "DirectionsCell.h"
-#import "Shop.h"
+#import "GoogleAPIShop.h"
 #import "Photo.h"
 #import "Route.h"
 #import "Leg.h" 
@@ -51,6 +52,15 @@
 	// Do any additional setup after loading the view.
     shopsArr = [[NSMutableArray alloc] init];
     self.routes = [[NSMutableArray alloc] init];
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSLog(@"Username: %@", [userDefaults valueForKey:@"username"]);
+    if ([[userDefaults valueForKey:@"username"] isEqualToString:@""]) {
+        UIStoryboard *st = [UIStoryboard storyboardWithName:[[NSBundle mainBundle].infoDictionary
+                                                             objectForKey:@"UIMainStoryboardFile"]
+                                                     bundle:[NSBundle mainBundle]];
+        LoginViewController *loginViewController = [st instantiateViewControllerWithIdentifier:@"LoginViewController"];
+        [self presentViewController:loginViewController animated:YES completion:nil];
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -118,7 +128,7 @@
                                                  
                                                  nil];
                     for (NSDictionary *shopDict in [json objectForKey:@"results"]) {
-                        Shop *newShop = [NSMapping makeObject:[Shop class] WithMapping:shopMapping fromJSON:shopDict];
+                        GoogleAPIShop *newShop = [NSMapping makeObject:[GoogleAPIShop class] WithMapping:shopMapping fromJSON:shopDict];
                         [shopsArr addObject:newShop];
                     }
                     [tableView reloadData];
@@ -331,7 +341,7 @@
 {
     if ([[segue identifier] isEqualToString:@"showRestaurant"]) {
         
-        Shop *shop = [shopsArr objectAtIndex:self.tableView.indexPathForSelectedRow.row];
+        GoogleAPIShop *shop = [shopsArr objectAtIndex:self.tableView.indexPathForSelectedRow.row];
         // show the location
         MKPointAnnotation *annotationView = [[MKPointAnnotation alloc] init];
         double lat = shop.location.lat;
@@ -365,7 +375,7 @@
                 initWithStyle:UITableViewCellStyleDefault
                 reuseIdentifier:cellReusableCellId];
     }
-    Shop *shop = [shopsArr objectAtIndex:indexPath.row];
+    GoogleAPIShop *shop = [shopsArr objectAtIndex:indexPath.row];
     // cell.textLabel.text = shop.SName;
     cell.nameLabel.text = shop.SName;
     
