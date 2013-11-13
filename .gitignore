@@ -1,3 +1,6 @@
 SmartShop.xcodeproj/project.xcworkspace/xcshareddata/
 SmartShop.xcodeproj/project.xcworkspace/xcuserdata/
 SmartShop.xcodeproj/xcuserdata/macowner.xcuserdatad/xcdebugger/
+jsServer/node_modules
+*.sqlite3
+*.swp
