@@ -1,21 +1,22 @@
 //
-//  Shop.m
+//  User.m
 //  SmartShop
 //
 //  Created by Batman on 13/11/2013.
 //  Copyright (c) 2013 Batman. All rights reserved.
 //
 
-#import "Shop.h"
+#import "User.h"
 #import "Post.h"
 
 
-@implementation Shop
+@implementation User
 
-@dynamic lat;
-@dynamic lng;
+@dynamic current_lat;
+@dynamic current_lng;
 @dynamic name;
-@dynamic shop_id;
+@dynamic user_id;
+@dynamic username;
 @dynamic post_relationship;
 
 @end

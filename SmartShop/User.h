@@ -1,5 +1,5 @@
 //
-//  Shop.h
+//  User.h
 //  SmartShop
 //
 //  Created by Batman on 13/11/2013.
@@ -11,16 +11,17 @@
 
 @class Post;
 
-@interface Shop : NSManagedObject
+@interface User : NSManagedObject
 
-@property (nonatomic, retain) NSNumber * lat;
-@property (nonatomic, retain) NSNumber * lng;
+@property (nonatomic, retain) NSNumber * current_lat;
+@property (nonatomic, retain) NSNumber * current_lng;
 @property (nonatomic, retain) NSString * name;
-@property (nonatomic, retain) NSNumber * shop_id;
+@property (nonatomic, retain) NSNumber * user_id;
+@property (nonatomic, retain) NSString * username;
 @property (nonatomic, retain) NSSet *post_relationship;
 @end
 
-@interface Shop (CoreDataGeneratedAccessors)
+@interface User (CoreDataGeneratedAccessors)
 
 - (void)addPost_relationshipObject:(Post *)value;
 - (void)removePost_relationshipObject:(Post *)value;

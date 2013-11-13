@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3401" systemVersion="13A603" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Post" representedClassName="Post" syncable="YES">
+        <attribute name="burning" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="cold" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="content" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="cool" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="freezing" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="hot" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="image_name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="post_id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="shop_id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="user_id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <relationship name="shop_relationship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Shop" inverseName="post_relationship" inverseEntity="Shop" syncable="YES"/>
+        <relationship name="user_relationship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="post_relationship" inverseEntity="User" syncable="YES"/>
+    </entity>
+    <entity name="Shop" representedClassName="Shop" syncable="YES">
+        <attribute name="lat" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="lng" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="shop_id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <relationship name="post_relationship" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Post" inverseName="shop_relationship" inverseEntity="Post" syncable="YES"/>
+    </entity>
+    <entity name="User" representedClassName="User" syncable="YES">
+        <attribute name="current_lat" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="current_lng" optional="YES" attributeType="Float" defaultValueString="0" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="user_id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="post_relationship" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Post" inverseName="user_relationship" inverseEntity="Post" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Post" positionX="0" positionY="0" width="128" height="238"/>
+        <element name="Shop" positionX="0" positionY="0" width="128" height="118"/>
+        <element name="User" positionX="0" positionY="0" width="128" height="118"/>
+    </elements>
+</model>
