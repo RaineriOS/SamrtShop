@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C9CE22E0EEF642DFB37EBB24 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 233F158B0E4145AAB319A6FD /* libPods.a */; };
+		F10774051834EDF1002F6EEF /* GetLocationShopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F10774041834EDF1002F6EEF /* GetLocationShopViewController.m */; };
 		F10BB56F1830DA94006348EC /* DirectionsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F10BB56E1830DA94006348EC /* DirectionsCell.m */; };
 		F1102DB6182AE378000B3677 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1102DB5182AE378000B3677 /* MapViewController.m */; };
 		F17B40EB182F82CD007C1E92 /* GoogleAPIShop.m in Sources */ = {isa = PBXBuildFile; fileRef = F17B40EA182F82CD007C1E92 /* GoogleAPIShop.m */; };
@@ -59,6 +60,8 @@
 /* Begin PBXFileReference section */
 		233F158B0E4145AAB319A6FD /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1B82E736A034204A199A162 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		F10774031834EDF1002F6EEF /* GetLocationShopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetLocationShopViewController.h; sourceTree = "<group>"; };
+		F10774041834EDF1002F6EEF /* GetLocationShopViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetLocationShopViewController.m; sourceTree = "<group>"; };
 		F10BB56D1830DA94006348EC /* DirectionsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DirectionsCell.h; sourceTree = "<group>"; };
 		F10BB56E1830DA94006348EC /* DirectionsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DirectionsCell.m; sourceTree = "<group>"; };
 		F1102DB4182AE378000B3677 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
@@ -266,6 +269,8 @@
 			children = (
 				F1A8654218329E9C00975F96 /* SocialNetworksViewController.h */,
 				F1A8654318329E9C00975F96 /* SocialNetworksViewController.m */,
+				F10774031834EDF1002F6EEF /* GetLocationShopViewController.h */,
+				F10774041834EDF1002F6EEF /* GetLocationShopViewController.m */,
 			);
 			name = "Social Networks";
 			sourceTree = "<group>";
@@ -464,6 +469,7 @@
 				F1D1BDED183000230007094F /* Location.m in Sources */,
 				F1C226FD1828FDC8001AB3E8 /* RootViewController.m in Sources */,
 				F19B99D91828F54400D9183D /* main.m in Sources */,
+				F10774051834EDF1002F6EEF /* GetLocationShopViewController.m in Sources */,
 				F17B40EB182F82CD007C1E92 /* GoogleAPIShop.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
