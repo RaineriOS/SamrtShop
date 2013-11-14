@@ -48,6 +48,16 @@
                                              selector:@selector(keyboardDidHide:)
                                                  name:UIKeyboardDidHideNotification
                                                object:nil];
+    // When the view of the app is clicked, remove the keyboard if it is active
+    UITapGestureRecognizer *resigneKeyboardTapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(resignTextViewPostContentKeyboard:)];
+    resigneKeyboardTapRecognizer.numberOfTapsRequired = 1;
+    [self.view addGestureRecognizer:resigneKeyboardTapRecognizer];
+
+}
+
+-(void)resignTextViewPostContentKeyboard:(UIGestureRecognizer *)getureRecognizer
+{
+    [self.textViewPostContent resignFirstResponder];
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -119,6 +129,7 @@
     }
 }
 
+// Post to tweeter
 - (IBAction)tweet:(id)sender
 {
     [self.textViewPostContent resignFirstResponder];
@@ -173,6 +184,7 @@
                                             completion:accountStoreHandler];
 }
 
+// Post the new input from the user to our server
 - (IBAction)post:(id)sender
 {
     SBJsonWriter *jsonWriter = [[SBJsonWriter alloc] init];
@@ -216,7 +228,8 @@
 
 }
 
-- (IBAction)pickPosition:(id)sender {
+- (IBAction)pickPosition:(id)sender
+{
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
