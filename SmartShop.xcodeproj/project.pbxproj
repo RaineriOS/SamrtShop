@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C9CE22E0EEF642DFB37EBB24 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 233F158B0E4145AAB319A6FD /* libPods.a */; };
 		F10BB56F1830DA94006348EC /* DirectionsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F10BB56E1830DA94006348EC /* DirectionsCell.m */; };
 		F1102DB6182AE378000B3677 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1102DB5182AE378000B3677 /* MapViewController.m */; };
 		F17B40EB182F82CD007C1E92 /* GoogleAPIShop.m in Sources */ = {isa = PBXBuildFile; fileRef = F17B40EA182F82CD007C1E92 /* GoogleAPIShop.m */; };
@@ -56,6 +57,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		233F158B0E4145AAB319A6FD /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E1B82E736A034204A199A162 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		F10BB56D1830DA94006348EC /* DirectionsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DirectionsCell.h; sourceTree = "<group>"; };
 		F10BB56E1830DA94006348EC /* DirectionsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DirectionsCell.m; sourceTree = "<group>"; };
 		F1102DB4182AE378000B3677 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
@@ -126,6 +129,7 @@
 				F19B99CF1828F54400D9183D /* CoreGraphics.framework in Frameworks */,
 				F19B99D11828F54400D9183D /* UIKit.framework in Frameworks */,
 				F19B99CD1828F54400D9183D /* Foundation.framework in Frameworks */,
+				C9CE22E0EEF642DFB37EBB24 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -168,6 +172,7 @@
 				F19B99F41828F54400D9183D /* SmartShopTests */,
 				F19B99CB1828F54400D9183D /* Frameworks */,
 				F19B99CA1828F54400D9183D /* Products */,
+				E1B82E736A034204A199A162 /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -192,6 +197,7 @@
 				F19B99CE1828F54400D9183D /* CoreGraphics.framework */,
 				F19B99D01828F54400D9183D /* UIKit.framework */,
 				F19B99EE1828F54400D9183D /* XCTest.framework */,
+				233F158B0E4145AAB319A6FD /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -314,9 +320,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F19B99FE1828F54400D9183D /* Build configuration list for PBXNativeTarget "SmartShop" */;
 			buildPhases = (
+				ED1954F495A745958E75A884 /* Check Pods Manifest.lock */,
 				F19B99C51828F54400D9183D /* Sources */,
 				F19B99C61828F54400D9183D /* Frameworks */,
 				F19B99C71828F54400D9183D /* Resources */,
+				344DEE613CD14EA28CBA38ED /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -400,6 +408,39 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		344DEE613CD14EA28CBA38ED /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		ED1954F495A745958E75A884 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		F19B99C51828F54400D9183D /* Sources */ = {
@@ -557,6 +598,7 @@
 		};
 		F19B99FF1828F54400D9183D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E1B82E736A034204A199A162 /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -570,6 +612,7 @@
 		};
 		F19B9A001828F54400D9183D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E1B82E736A034204A199A162 /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;

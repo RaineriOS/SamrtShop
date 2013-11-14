@@ -2,5 +2,7 @@ SmartShop.xcodeproj/project.xcworkspace/xcshareddata/
 SmartShop.xcodeproj/project.xcworkspace/xcuserdata/
 SmartShop.xcodeproj/xcuserdata/macowner.xcuserdatad/xcdebugger/
 jsServer/node_modules
+Pods/
+Podfile.lock
 *.sqlite3
 *.swp

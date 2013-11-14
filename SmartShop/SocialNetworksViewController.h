@@ -8,12 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SocialNetworksViewController : UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate>
+@interface SocialNetworksViewController : UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (strong, nonatomic) IBOutlet UITextView *textViewPostContent;
 @property (strong, nonatomic) IBOutlet UIImageView *imageView;
 - (IBAction)takePicture:(id)sender;
 - (IBAction)tweet:(id)sender;
+- (IBAction)post:(id)sender;
+- (IBAction)pickPosition:(id)sender;
 
 @end

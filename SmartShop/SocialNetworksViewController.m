@@ -10,6 +10,7 @@
 
 #import <Social/Social.h>
 #import <Accounts/Accounts.h>
+#import <SBJson.h>
 
 @interface SocialNetworksViewController ()
 @property (nonatomic, strong) ACAccountStore *accountStore;
@@ -172,6 +173,52 @@
                                             completion:accountStoreHandler];
 }
 
+- (IBAction)post:(id)sender
+{
+    SBJsonWriter *jsonWriter = [[SBJsonWriter alloc] init];
+    NSString *jsonString = [jsonWriter stringWithObject:@{@"content": self.textViewPostContent.text}];
+    NSString *urlString = @"http://localhost:3000/image";
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+    [request setURL:[NSURL URLWithString:urlString]];
+    [request setHTTPMethod:@"POST"];
+    
+    // For when the user needs to be authenticated
+    // if ([defaults objectForKey:@"UserToken"]) {
+        // add the header to the request.
+        // [request addValue:[defaults objectForKey:@"UserToken"] forHTTPHeaderField:@"token"];
+    // }
+    
+    NSString *boundary = @"14737809831466499882746641449"; // Randomly generated
+    NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@",boundary];
+    [request addValue:contentType forHTTPHeaderField: @"Content-Type"];
+    
+    
+    NSMutableData *body = [NSMutableData data];
+    [body appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[@"Content-Disposition: form-data; name=\"body\"\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[@"Content-Type: application/json\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[[NSString stringWithFormat:@"%@\r\n", jsonString] dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    [body appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[@"Content-Disposition: form-data; name=\"recording\"; filename=\"test.jpg\"\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[@"Content-Type: application/octet-stream\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:UIImageJPEGRepresentation(self.imageView.image, 1.0)];
+    [body appendData:[[NSString stringWithFormat:@"\r\n--%@--\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    // set request body
+    [request setHTTPBody:body];
+    
+    // send the request (submit the form) and get the response
+    NSData *returnData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
+    NSString *returnString = [[NSString alloc] initWithData:returnData encoding:NSUTF8StringEncoding];
+    
+    NSLog(@"%@", returnString);
+
+}
+
+- (IBAction)pickPosition:(id)sender {
+}
+
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     
@@ -186,5 +233,12 @@
     [picker dismissViewControllerAnimated:YES completion:NULL];
 }
 
+
+-(void)textViewDidChange:(UITextView *)textView
+{
+    if (textView.text.length > 140) {
+        textView.text = [textView.text substringToIndex:140];
+    }
+}
 
 @end
