@@ -18,4 +18,6 @@
 @property (strong, nonatomic) IBOutlet UITextField *locationTextField;
 - (IBAction)searchForShops:(id)sender;
 
+@property (strong, nonatomic) IBOutlet MKMapView *mapView;
+
 @end

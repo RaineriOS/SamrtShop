@@ -267,7 +267,6 @@
 		F1A8653E18329E3900975F96 /* Social Networks */ = {
 			isa = PBXGroup;
 			children = (
-				F1A8654218329E9C00975F96 /* SocialNetworksViewController.h */,
 				F1A8654318329E9C00975F96 /* SocialNetworksViewController.m */,
 				F10774031834EDF1002F6EEF /* GetLocationShopViewController.h */,
 				F10774041834EDF1002F6EEF /* GetLocationShopViewController.m */,
@@ -278,6 +277,7 @@
 		F1A8655518337F6000975F96 /* Core Data */ = {
 			isa = PBXGroup;
 			children = (
+				F1A8654218329E9C00975F96 /* SocialNetworksViewController.h */,
 				F1A8655C18337FDE00975F96 /* Post.h */,
 				F1A8655D18337FDE00975F96 /* Post.m */,
 				F1A8656418338D5100975F96 /* User.h */,

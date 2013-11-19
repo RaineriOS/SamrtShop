@@ -32,6 +32,10 @@
 @end
 
 @implementation RootViewController
+{
+    MKPointAnnotation *currentAnnotationView;
+    NSMutableArray *images;
+}
 
 @synthesize tableView;
 @synthesize locationTextField;
@@ -50,6 +54,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    images = [[NSMutableArray alloc] init];
     shopsArr = [[NSMutableArray alloc] init];
     self.routes = [[NSMutableArray alloc] init];
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
@@ -389,8 +394,64 @@
         cell.destinationLabel.text = response.destination.name;
         cell.distanceLabel.text = [[NSString alloc] initWithFormat:@"%0.2f m", route.distance, nil];
         cell.durationLabel.text = [[NSString alloc] initWithFormat:@"%0.0f minutes", route.expectedTravelTime/60, nil];
+        if (images.count > indexPath.row) {
+            cell.mapImage.image = [images objectAtIndex:indexPath.row];
+        }
     }];
+    
     //[self getDirectionsFrom:self.origin to:dest forCell:cell];
+       // Camera snap shot thing
+    MKMapCamera *camera = [MKMapCamera
+                           cameraLookingAtCenterCoordinate:dest
+                           fromEyeCoordinate:dest
+                           eyeAltitude:500.0];
+    
+    [self.mapView setCamera:camera];
+    
+    if (currentAnnotationView) {
+        [self.mapView removeAnnotation:currentAnnotationView];
+    }
+    MKPointAnnotation *annotationView = [[MKPointAnnotation alloc] init];
+    currentAnnotationView = annotationView;
+    annotationView.coordinate = dest;
+    [self.mapView addAnnotation:annotationView];
+    
+    MKMapSnapshotOptions *options = [[MKMapSnapshotOptions alloc] init];
+    options.region = self.mapView.region;
+    options.scale = [UIScreen mainScreen].scale;
+    options.size = self.mapView.frame.size;
+    
+    MKMapSnapshotter *snapshotter = [[MKMapSnapshotter alloc] initWithOptions:options];
+    [snapshotter startWithQueue:dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0) completionHandler:^(MKMapSnapshot *snapshot, NSError *error) {
+        
+        // get the image associated with the snapshot
+        UIImage *image = snapshot.image;
+        
+        // Get a standard annotation view pin. Clearly, Apple assumes that we'll only want to draw standard annotation pins!
+        MKAnnotationView *pin = [[MKPinAnnotationView alloc] initWithAnnotation:nil reuseIdentifier:@""];
+        UIImage *pinImage = pin.image;
+        
+        // ok, let's start to create our final image
+        UIGraphicsBeginImageContextWithOptions(image.size, YES, image.scale);
+        
+        // first, draw the image from the snapshotter
+        [image drawAtPoint:CGPointMake(0, 0)];
+        
+        // CGPoint point = [snapshot pointForCoordinate:annotation.coordinate];
+        CGPoint point = [snapshot pointForCoordinate:dest];
+        CGPoint pinCenterOffset = pin.centerOffset;
+        point.x -= pin.bounds.size.width / 2.0;
+        point.y -= pin.bounds.size.height / 2.0;
+        point.x += pinCenterOffset.x;
+        point.y += pinCenterOffset.y;
+        
+        [pinImage drawAtPoint:point];
+        
+        // grab the final image
+        UIImage *finalImage = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        [images addObject:finalImage];
+    }];
     
     return cell;
 }
