@@ -27,16 +27,17 @@
 
 @property (strong, nonatomic) MKPointAnnotation *currentPointAnnotation;
 @property (strong, nonatomic) NSMutableArray *routes;
+@property (strong, nonatomic) NSMutableArray *tableCellInfoArr;
 @property (assign, nonatomic) CLLocationCoordinate2D origin;
 
 @end
 
 @implementation RootViewController
 {
-    MKPointAnnotation *currentAnnotationView;
     NSMutableArray *images;
 }
 
+@synthesize tableCellInfoArr;
 @synthesize tableView;
 @synthesize locationTextField;
 @synthesize shopsArr;
@@ -56,7 +57,9 @@
 	// Do any additional setup after loading the view.
     images = [[NSMutableArray alloc] init];
     shopsArr = [[NSMutableArray alloc] init];
+    tableCellInfoArr = [[NSMutableArray alloc] init];
     self.routes = [[NSMutableArray alloc] init];
+    [self.mapView setHidden:YES];
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     NSLog(@"Username: %@", [userDefaults valueForKey:@"username"]);
     if ([[userDefaults valueForKey:@"username"] isEqualToString:@""]) {
@@ -76,6 +79,9 @@
 
 -(void)searchForShops:(id)sender
 {
+    [tableCellInfoArr removeAllObjects];
+    [images removeAllObjects];
+    [self.routes removeAllObjects];
     NSString *city = self.locationTextField.text;
     // The address entered
     NSOperationQueue *downloadQueue = [[NSOperationQueue alloc] init];
@@ -135,8 +141,26 @@
                     for (NSDictionary *shopDict in [json objectForKey:@"results"]) {
                         GoogleAPIShop *newShop = [NSMapping makeObject:[GoogleAPIShop class] WithMapping:shopMapping fromJSON:shopDict];
                         [shopsArr addObject:newShop];
+                        double lat = newShop.location.lat;
+                        double lng = newShop.location.lng;
+                        CLLocationCoordinate2D dest = CLLocationCoordinate2DMake(lat, lng);
+                        [self appleGetDirectionsFrom:self.origin to:dest completionBlock:^(MKDirectionsResponse *response){
+                                   MKRoute *route = [[response routes] lastObject];
+                            NSDictionary *cellInfo = @{
+                                                       @"originLabel": response.source.name,
+                                                       @"destinationLabel": response.destination.name,
+                                                       @"distanceLabel": [[NSString alloc] initWithFormat:@"%0.2f m", route.distance, nil],
+                                                       @"durationLabel":[[NSString alloc] initWithFormat:@"%0.0f minutes", route.expectedTravelTime/60, nil]
+                                                       };
+                            [tableCellInfoArr addObject:cellInfo];
+                            [tableView reloadData];
+                        }];
+                        [self createImage:dest completionblock:^{
+                            dispatch_sync(dispatch_get_main_queue(), ^{
+                                [tableView reloadData];
+                            });
+                        }];
                     }
-                    [tableView reloadData];
                 }];
             }
         }];
@@ -166,6 +190,12 @@
     
     MKDirections *direction = [[MKDirections alloc]initWithRequest:request];
     
+    int __block numResponsesReceived = 0;
+    void(^handleResponse)(MKDirectionsResponse *response)=^(MKDirectionsResponse *response){
+        numResponsesReceived += 1;
+        if (numResponsesReceived==3)
+            block(response);
+    };
     [self.routes removeAllObjects];
     [direction calculateDirectionsWithCompletionHandler:^(MKDirectionsResponse *response, NSError *error) {
         [[[CLGeocoder alloc] init] reverseGeocodeLocation:source.location completionHandler:
@@ -173,7 +203,8 @@
              if ([placemarks count] > 0)
              {
                  response.source.name = [[[placemarks lastObject] addressDictionary] objectForKey:@"Name"];
-                 block(response);
+                 // block(response);
+                 handleResponse(response);
              }
          }];
         
@@ -183,14 +214,17 @@
              {
                  response.destination.name = [[[placemarks lastObject] addressDictionary] objectForKey:@"Name"];
                  block(response);
+                 handleResponse(response);
              }
          }];
         
         NSLog(@"response = %@",response);
-        block(response);
+        // block(response);
+        handleResponse(response);
         NSArray *arrRoutes = [response routes];
         [self.routes addObjectsFromArray:arrRoutes];
         /*
+         // Showing steps and info on that
         [arrRoutes enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
             
             MKRoute *rout = obj;
@@ -384,22 +418,26 @@
     // cell.textLabel.text = shop.SName;
     cell.nameLabel.text = shop.SName;
     
-    double lat = shop.location.lat;
-    double lng = shop.location.lng;
-    CLLocationCoordinate2D dest = CLLocationCoordinate2DMake(lat, lng);
-    // [self getDirectionsFrom:self.origin to:dest];
-    [self appleGetDirectionsFrom:self.origin to:dest completionBlock:^(MKDirectionsResponse *response){
-        MKRoute *route = [[response routes] lastObject];
-        cell.originLabel.text = response.source.name;
-        cell.destinationLabel.text = response.destination.name;
-        cell.distanceLabel.text = [[NSString alloc] initWithFormat:@"%0.2f m", route.distance, nil];
-        cell.durationLabel.text = [[NSString alloc] initWithFormat:@"%0.0f minutes", route.expectedTravelTime/60, nil];
-        if (images.count > indexPath.row) {
-            cell.mapImage.image = [images objectAtIndex:indexPath.row];
-        }
-    }];
+    if (tableCellInfoArr.count > indexPath.row) {
+        NSDictionary *cellInfo = [tableCellInfoArr objectAtIndex:indexPath.row];
+        cell.originLabel.text = [cellInfo objectForKey:@"originLabel"];
+        cell.destinationLabel.text = [cellInfo objectForKey:@"destinationLabel"];
+        cell.distanceLabel.text = [cellInfo objectForKey:@"distanceLabel"];
+        cell.durationLabel.text = [cellInfo objectForKey:@"durationLabel"];
+    }
+    if (images.count > indexPath.row) {
+        cell.mapImage.image = [images objectAtIndex:indexPath.row];
+    }
     
-    //[self getDirectionsFrom:self.origin to:dest forCell:cell];
+    
+    return cell;
+}
+
+// Based on a given destination, create an image in the mapview and take a snapshot of it
+-(void)createImage:(CLLocationCoordinate2D) dest completionblock:(void(^)())block
+{
+    
+       //[self getDirectionsFrom:self.origin to:dest forCell:cell];
        // Camera snap shot thing
     MKMapCamera *camera = [MKMapCamera
                            cameraLookingAtCenterCoordinate:dest
@@ -407,14 +445,6 @@
                            eyeAltitude:500.0];
     
     [self.mapView setCamera:camera];
-    
-    if (currentAnnotationView) {
-        [self.mapView removeAnnotation:currentAnnotationView];
-    }
-    MKPointAnnotation *annotationView = [[MKPointAnnotation alloc] init];
-    currentAnnotationView = annotationView;
-    annotationView.coordinate = dest;
-    [self.mapView addAnnotation:annotationView];
     
     MKMapSnapshotOptions *options = [[MKMapSnapshotOptions alloc] init];
     options.region = self.mapView.region;
@@ -451,9 +481,9 @@
         UIImage *finalImage = UIGraphicsGetImageFromCurrentImageContext();
         UIGraphicsEndImageContext();
         [images addObject:finalImage];
+        if (block)
+            block();
     }];
-    
-    return cell;
 }
 
 #pragma mark - UITableViewDelegate
