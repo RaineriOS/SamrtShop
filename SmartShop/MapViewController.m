@@ -111,6 +111,30 @@
     [overlays removeAllObjects];
 }
 
+
+#pragma mark - UITableViewDataSource
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 3;
+}
+
+-(UITableViewCell *)tableView:(UITableView *)localTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *cellReusableCellId = @"DirectionsCell";
+    UITableViewCell *cell = [localTableView dequeueReusableCellWithIdentifier:cellReusableCellId];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc]
+                initWithStyle:UITableViewCellStyleDefault
+                reuseIdentifier:cellReusableCellId];
+    }
+    
+    cell.textLabel.text = @"test";
+    
+    return cell;
+}
+
+
 // Google decode the google smoth path
 + (MKPolyline *)polylineWithEncodedString:(NSString *)encodedString
 {

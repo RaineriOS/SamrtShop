@@ -9,11 +9,12 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 
-@interface MapViewController : UIViewController <MKMapViewDelegate>
+@interface MapViewController : UIViewController <MKMapViewDelegate, UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic) MKPointAnnotation *pointAnnotation;
 @property (strong, nonatomic) NSArray *locationArray;
 @property (strong, nonatomic) IBOutlet MKMapView *mapView;
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
 
 -(void) placeAnnotationOnMap:(MKPointAnnotation *)annotationView;
 -(void) removeOverlays;

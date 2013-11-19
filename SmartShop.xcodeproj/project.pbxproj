@@ -11,6 +11,8 @@
 		F10774051834EDF1002F6EEF /* GetLocationShopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F10774041834EDF1002F6EEF /* GetLocationShopViewController.m */; };
 		F10BB56F1830DA94006348EC /* DirectionsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F10BB56E1830DA94006348EC /* DirectionsCell.m */; };
 		F1102DB6182AE378000B3677 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1102DB5182AE378000B3677 /* MapViewController.m */; };
+		F1618107183BAAE700EF2830 /* DirectionCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F1618106183BAAE700EF2830 /* DirectionCellModel.m */; };
+		F161810A183BCCFB00EF2830 /* ShopAndRouteController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1618109183BCCFB00EF2830 /* ShopAndRouteController.m */; };
 		F17B40EB182F82CD007C1E92 /* GoogleAPIShop.m in Sources */ = {isa = PBXBuildFile; fileRef = F17B40EA182F82CD007C1E92 /* GoogleAPIShop.m */; };
 		F19B99CD1828F54400D9183D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F19B99CC1828F54400D9183D /* Foundation.framework */; };
 		F19B99CF1828F54400D9183D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F19B99CE1828F54400D9183D /* CoreGraphics.framework */; };
@@ -66,6 +68,10 @@
 		F10BB56E1830DA94006348EC /* DirectionsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DirectionsCell.m; sourceTree = "<group>"; };
 		F1102DB4182AE378000B3677 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 		F1102DB5182AE378000B3677 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
+		F1618105183BAAE700EF2830 /* DirectionCellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DirectionCellModel.h; sourceTree = "<group>"; };
+		F1618106183BAAE700EF2830 /* DirectionCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DirectionCellModel.m; sourceTree = "<group>"; };
+		F1618108183BCCFB00EF2830 /* ShopAndRouteController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopAndRouteController.h; sourceTree = "<group>"; };
+		F1618109183BCCFB00EF2830 /* ShopAndRouteController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopAndRouteController.m; sourceTree = "<group>"; };
 		F17B40E9182F82CD007C1E92 /* GoogleAPIShop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoogleAPIShop.h; sourceTree = "<group>"; };
 		F17B40EA182F82CD007C1E92 /* GoogleAPIShop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoogleAPIShop.m; sourceTree = "<group>"; };
 		F19B99C91828F54400D9183D /* SmartShop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartShop.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -149,9 +155,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F1618104183BAA0600EF2830 /* Table View Cell */ = {
+			isa = PBXGroup;
+			children = (
+				F1618105183BAAE700EF2830 /* DirectionCellModel.h */,
+				F1618106183BAAE700EF2830 /* DirectionCellModel.m */,
+			);
+			name = "Table View Cell";
+			sourceTree = "<group>";
+		};
 		F17B40EC182F82D9007C1E92 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				F1D1BDE5182FD3790007094F /* NSMapping.h */,
+				F1D1BDE6182FD3790007094F /* NSMapping.m */,
+				F1618104183BAA0600EF2830 /* Table View Cell */,
 				F1A8655518337F6000975F96 /* Core Data */,
 				F1D1B0E818322FF50075AFC1 /* Google API */,
 			);
@@ -256,6 +274,8 @@
 			children = (
 				F1C226FB1828FDC8001AB3E8 /* RootViewController.h */,
 				F1C226FC1828FDC8001AB3E8 /* RootViewController.m */,
+				F1618108183BCCFB00EF2830 /* ShopAndRouteController.h */,
+				F1618109183BCCFB00EF2830 /* ShopAndRouteController.m */,
 				F10BB56D1830DA94006348EC /* DirectionsCell.h */,
 				F10BB56E1830DA94006348EC /* DirectionsCell.m */,
 				F1102DB4182AE378000B3677 /* MapViewController.h */,
@@ -312,8 +332,6 @@
 				F1D1BDF2183008A20007094F /* Step.m */,
 				F1D1BDEB183000230007094F /* Location.h */,
 				F1D1BDEC183000230007094F /* Location.m */,
-				F1D1BDE5182FD3790007094F /* NSMapping.h */,
-				F1D1BDE6182FD3790007094F /* NSMapping.m */,
 			);
 			name = "Google API";
 			sourceTree = "<group>";
@@ -453,6 +471,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F1D1BDF0183000D60007094F /* Leg.m in Sources */,
+				F1618107183BAAE700EF2830 /* DirectionCellModel.m in Sources */,
 				F1D1BDF3183008A20007094F /* Step.m in Sources */,
 				F1A8656618338D5100975F96 /* User.m in Sources */,
 				F1A8654B18337A9900975F96 /* Model.xcdatamodeld in Sources */,
@@ -465,6 +484,7 @@
 				F1A8656B1833984F00975F96 /* LoginViewController.m in Sources */,
 				F1102DB6182AE378000B3677 /* MapViewController.m in Sources */,
 				F1A8655818337FDE00975F96 /* Shop.m in Sources */,
+				F161810A183BCCFB00EF2830 /* ShopAndRouteController.m in Sources */,
 				F1A8655E18337FDE00975F96 /* Post.m in Sources */,
 				F1D1BDED183000230007094F /* Location.m in Sources */,
 				F1C226FD1828FDC8001AB3E8 /* RootViewController.m in Sources */,

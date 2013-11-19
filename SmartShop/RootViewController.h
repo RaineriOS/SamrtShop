@@ -11,9 +11,6 @@
 
 @interface RootViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
 
-@property (strong, nonatomic) NSMutableArray *shopsArr;
-
-
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) IBOutlet UITextField *locationTextField;
 - (IBAction)searchForShops:(id)sender;
