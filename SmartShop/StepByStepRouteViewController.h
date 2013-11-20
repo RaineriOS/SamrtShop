@@ -9,8 +9,15 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 
-@interface MapViewController : UIViewController <MKMapViewDelegate, UITableViewDataSource, UITableViewDelegate>
+@protocol StepByStepRouteViewDelegate <NSObject>
 
+-(void)drawAndDirectRoute:(NSArray *) routeArr withDestinationAnnotation:(MKPointAnnotation *)annotationView;
+
+@end
+
+@interface StepByStepRouteViewController : UIViewController <MKMapViewDelegate, UITableViewDataSource, UITableViewDelegate, StepByStepRouteViewDelegate>
+
+// Can be made private
 @property (strong, nonatomic) MKPointAnnotation *pointAnnotation;
 @property (strong, nonatomic) NSArray *locationArray;
 @property (strong, nonatomic) IBOutlet MKMapView *mapView;

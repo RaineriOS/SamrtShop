@@ -16,5 +16,6 @@
 @property (strong, nonatomic) NSString *destination;
 @property (strong, nonatomic) NSString *distance;
 @property (strong, nonatomic) NSString *duration;
+@property (strong, nonatomic) NSArray *routes;
 
 @end

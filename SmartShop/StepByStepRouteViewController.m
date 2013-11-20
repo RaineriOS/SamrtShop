@@ -6,21 +6,22 @@
 //  Copyright (c) 2013 Batman. All rights reserved.
 //
 
-#import "MapViewController.h"
+#import "StepByStepRouteViewController.h"
 #import "Location.h"
 
-@interface MapViewController ()
+@interface StepByStepRouteViewController ()
 
 @property (strong, nonatomic) MKPolyline *routeLine;
 @property (strong, nonatomic) MKPolylineView *routeLineView;
 
 @end
 
-@implementation MapViewController
+@implementation StepByStepRouteViewController
 {
     int index;
     NSArray *colors;
     NSMutableArray *overlays;
+    NSArray *stepsArr;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -46,6 +47,13 @@
     [super didReceiveMemoryWarning];
 }
 
+
+-(void)drawAndDirectRoute:(NSArray *) routeArr withDestinationAnnotation:(MKPointAnnotation *)annotationView;
+{
+    self.locationArray = routeArr;
+    self.pointAnnotation = annotationView;
+}
+
 -(void)placeAnnotationOnMap:(MKPointAnnotation *)annotationView
 {
     [self.mapView addAnnotation:(id)annotationView];
@@ -66,22 +74,12 @@
     
     [self.locationArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         
-        MKRoute *rout = obj;
+        MKRoute *route = obj;
         
-        MKPolyline *line = [rout polyline];
-        //self.routeLine = line;
+        MKPolyline *line = [route polyline];
         [self.mapView addOverlay:line];
-        NSLog(@"Rout Name : %@",rout.name);
-        NSLog(@"Total Distance (in Meters) :%f",rout.distance);
         
-        NSArray *steps = [rout steps];
-        
-        NSLog(@"Total Steps : %d",[steps count]);
-        
-        // [steps enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-            // NSLog(@"Rout Instruction : %@",[obj instructions]);
-            // NSLog(@"Rout Distance : %f",[obj distance]);
-        // }];
+        stepsArr = [route steps];
     }];
     
     [self placeAnnotationOnMap:self.pointAnnotation];
@@ -116,7 +114,7 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 3;
+    return [stepsArr count];
 }
 
 -(UITableViewCell *)tableView:(UITableView *)localTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -129,12 +127,27 @@
                 reuseIdentifier:cellReusableCellId];
     }
     
-    cell.textLabel.text = @"test";
+    cell.textLabel.text = [[stepsArr objectAtIndex:indexPath.row] instructions];
     
     return cell;
 }
 
+#pragma mark - UITableViewDataDelegate
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    CLLocationCoordinate2D stepCoordinate = [[[stepsArr objectAtIndex:indexPath.row] polyline] coordinate];
+    MKMapCamera *camera = [MKMapCamera
+                           cameraLookingAtCenterCoordinate:stepCoordinate
+                           fromEyeCoordinate:stepCoordinate
+                           eyeAltitude:500.0];
+    
+    [UIView animateWithDuration:1.0 animations:^{
+        [self.mapView setCamera:camera];
+    }];
+}
 
+
+#pragma mark- Google API decode string into smooth routes
 // Google decode the google smoth path
 + (MKPolyline *)polylineWithEncodedString:(NSString *)encodedString
 {

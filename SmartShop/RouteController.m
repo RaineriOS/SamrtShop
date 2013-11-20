@@ -53,10 +53,10 @@
                                                                 initWithFormat:@"%0.2f m", route.distance, nil],
                                                   @"duration":[[NSString alloc]
                                                                initWithFormat:@"%0.0f minutes",
-                                                               route.expectedTravelTime/60, nil]
+                                                               route.expectedTravelTime/60, nil],
+                                                  @"routes":[response routes]
                                                   }];
                 [routesArr replaceObjectAtIndex:i withObject:newDirection];
-                // [routesArr addObject:newDirection];
             }];
             i++;
         }

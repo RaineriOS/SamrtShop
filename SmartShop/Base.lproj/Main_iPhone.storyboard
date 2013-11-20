@@ -127,10 +127,10 @@
             </objects>
             <point key="canvasLocation" x="1309" y="341"/>
         </scene>
-        <!--Map View Controller-->
+        <!--Step By Step Route View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="MapViewController" sceneMemberID="viewController">
+                <viewController id="vXZ-lx-hvc" customClass="StepByStepRouteViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="3dv-t3-q5M"/>
                         <viewControllerLayoutGuide type="bottom" id="oZf-XE-fAV"/>

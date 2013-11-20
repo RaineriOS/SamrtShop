@@ -10,7 +10,7 @@
 		C9CE22E0EEF642DFB37EBB24 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 233F158B0E4145AAB319A6FD /* libPods.a */; };
 		F10774051834EDF1002F6EEF /* GetLocationShopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F10774041834EDF1002F6EEF /* GetLocationShopViewController.m */; };
 		F10BB56F1830DA94006348EC /* DirectionsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F10BB56E1830DA94006348EC /* DirectionsCell.m */; };
-		F1102DB6182AE378000B3677 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1102DB5182AE378000B3677 /* MapViewController.m */; };
+		F1102DB6182AE378000B3677 /* StepByStepRouteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1102DB5182AE378000B3677 /* StepByStepRouteViewController.m */; };
 		F1618107183BAAE700EF2830 /* DirectionCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F1618106183BAAE700EF2830 /* DirectionCellModel.m */; };
 		F161810A183BCCFB00EF2830 /* ShopController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1618109183BCCFB00EF2830 /* ShopController.m */; };
 		F17B40EB182F82CD007C1E92 /* GoogleAPIShop.m in Sources */ = {isa = PBXBuildFile; fileRef = F17B40EA182F82CD007C1E92 /* GoogleAPIShop.m */; };
@@ -68,8 +68,8 @@
 		F10774041834EDF1002F6EEF /* GetLocationShopViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetLocationShopViewController.m; sourceTree = "<group>"; };
 		F10BB56D1830DA94006348EC /* DirectionsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DirectionsCell.h; sourceTree = "<group>"; };
 		F10BB56E1830DA94006348EC /* DirectionsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DirectionsCell.m; sourceTree = "<group>"; };
-		F1102DB4182AE378000B3677 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
-		F1102DB5182AE378000B3677 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
+		F1102DB4182AE378000B3677 /* StepByStepRouteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StepByStepRouteViewController.h; sourceTree = "<group>"; };
+		F1102DB5182AE378000B3677 /* StepByStepRouteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StepByStepRouteViewController.m; sourceTree = "<group>"; };
 		F1618105183BAAE700EF2830 /* DirectionCellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DirectionCellModel.h; sourceTree = "<group>"; };
 		F1618106183BAAE700EF2830 /* DirectionCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DirectionCellModel.m; sourceTree = "<group>"; };
 		F1618108183BCCFB00EF2830 /* ShopController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopController.h; sourceTree = "<group>"; };
@@ -288,8 +288,8 @@
 				F193B638183D2631008CA8FC /* MapSnapShotsController.m */,
 				F10BB56D1830DA94006348EC /* DirectionsCell.h */,
 				F10BB56E1830DA94006348EC /* DirectionsCell.m */,
-				F1102DB4182AE378000B3677 /* MapViewController.h */,
-				F1102DB5182AE378000B3677 /* MapViewController.m */,
+				F1102DB4182AE378000B3677 /* StepByStepRouteViewController.h */,
+				F1102DB5182AE378000B3677 /* StepByStepRouteViewController.m */,
 			);
 			name = "Find Shops";
 			sourceTree = "<group>";
@@ -494,7 +494,7 @@
 				F1A8654418329E9C00975F96 /* SocialNetworksViewController.m in Sources */,
 				F193B636183CF8A7008CA8FC /* RouteController.m in Sources */,
 				F1A8656B1833984F00975F96 /* LoginViewController.m in Sources */,
-				F1102DB6182AE378000B3677 /* MapViewController.m in Sources */,
+				F1102DB6182AE378000B3677 /* StepByStepRouteViewController.m in Sources */,
 				F1A8655818337FDE00975F96 /* Shop.m in Sources */,
 				F161810A183BCCFB00EF2830 /* ShopController.m in Sources */,
 				F1A8655E18337FDE00975F96 /* Post.m in Sources */,

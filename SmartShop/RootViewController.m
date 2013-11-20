@@ -12,7 +12,7 @@
 #import <CoreLocation/CoreLocation.h>
 
 #import "LoginViewController.h"
-#import "MapViewController.h"
+#import "StepByStepRouteViewController.h"
 #import "DirectionsCell.h"
 #import "DirectionCellModel.h"
 #import "ShopController.h"
@@ -29,7 +29,6 @@
 
 @interface RootViewController ()
 
-@property (strong, nonatomic) MKPointAnnotation *currentPointAnnotation;
 @property (strong, atomic) NSMutableArray *directionModelsArr;
 @property (strong, atomic) NSMutableArray *imagesArr;
 
@@ -45,6 +44,7 @@
 @synthesize imagesArr;
 @synthesize tableView;
 @synthesize locationTextField;
+@synthesize delegate;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -108,25 +108,19 @@
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([[segue identifier] isEqualToString:@"showRestaurant"]) {
-        GoogleAPIShop *shop = [[directionModelsArr objectAtIndex:tableView.indexPathForSelectedRow.row] shop];
+        DirectionCellModel *directionModel = [directionModelsArr objectAtIndex:tableView.indexPathForSelectedRow.row];
+        GoogleAPIShop *shop = [directionModel shop];
+        
         // show the location
         MKPointAnnotation *annotationView = [[MKPointAnnotation alloc] init];
-        double lat = shop.location.lat;
-        double lng = shop.location.lng;
-        // NSLog(@"%f %f %i", lat, lng, self.tableView.indexPathForSelectedRow.row);
-        NSLog(@"%i", self.tableView.indexPathForSelectedRow.row);
-        annotationView.coordinate = CLLocationCoordinate2DMake(lat, lng);
-        self.currentPointAnnotation = annotationView;
-        
-        MapViewController *mapVC = [segue destinationViewController];
-        [mapVC removeOverlays];
-        // mapVC.locationArray = @[[self.routesArr objectAtIndex:tableView.indexPathForSelectedRow.row]];
-        [mapVC setPointAnnotation:self.currentPointAnnotation];
+        annotationView.coordinate = CLLocationCoordinate2DMake(shop.location.lat, shop.location.lng);
+        delegate = [segue destinationViewController];
+        if ([delegate respondsToSelector:@selector(drawAndDirectRoute:withDestinationAnnotation:)])
+            [delegate drawAndDirectRoute:directionModel.routes withDestinationAnnotation:annotationView];
     }
 }
 
 #pragma mark - UITableViewDataSource
-
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return [directionModelsArr count];
