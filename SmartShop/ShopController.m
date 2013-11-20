@@ -198,7 +198,7 @@
                 
                 for (NSDictionary *routeDict in [json objectForKey:@"routes"]) {
                     Route *newRoute = [NSMapping makeObject:[Route class] WithMapping:routeMapping fromJSON:routeDict];
-                    Leg *leg = [newRoute.legsArray lastObject];
+                    // Leg *leg = [newRoute.legsArray lastObject];
                     // cell.originLabel.text = leg.startAddress;
                     // cell.destinationLabel.text = leg.endAddress;
                     // cell.durationLabel.text = leg.duration;
