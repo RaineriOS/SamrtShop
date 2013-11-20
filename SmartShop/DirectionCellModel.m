@@ -10,9 +10,4 @@
 
 @implementation DirectionCellModel
 
-@synthesize origin;
-@synthesize destination;
-@synthesize distance;
-@synthesize duration;
-
 @end
