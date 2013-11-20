@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <MapKit/MapKit.h>
 
-@interface MapSnapShotsController : NSObject
+@interface MapSnapshotsController : NSObject
 
 @property (strong, nonatomic) MKMapView *mapView;
 @property (strong, nonatomic) NSMutableArray *imagesArr;

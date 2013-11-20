@@ -6,10 +6,10 @@
 //  Copyright (c) 2013 Batman. All rights reserved.
 //
 
-#import "MapSnapShotsController.h"
+#import "MapSnapshotsController.h"
 #import "GoogleAPIShop.h"
 
-@implementation MapSnapShotsController
+@implementation MapSnapshotsController
 
 @synthesize imagesArr;
 

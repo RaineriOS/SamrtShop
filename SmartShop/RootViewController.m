@@ -24,7 +24,7 @@
 #import "Location.h"
 #import "NSMapping.h"
 #import "RouteController.h"
-#import "MapSnapShotsController.h"
+#import "MapSnapshotsController.h"
 
 
 @interface RootViewController ()
@@ -95,7 +95,7 @@
         [shopController searchForShops:origin completionBlock:^{
             RouteController *findRoutes = [[RouteController alloc] initWithShops:shopController.shopsArr andLocation:origin];
             directionModelsArr = findRoutes.routesArr;
-            MapSnapShotsController *snapshotImages = [[MapSnapShotsController alloc] initWithShops:shopController.shopsArr withMapView:self.mapView];
+            MapSnapshotsController *snapshotImages = [[MapSnapshotsController alloc] initWithShops:shopController.shopsArr withMapView:self.mapView];
             imagesArr = snapshotImages.imagesArr;
             dispatch_sync(dispatch_get_main_queue(), ^{
                 [tableView reloadData];

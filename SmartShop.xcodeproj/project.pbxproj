@@ -15,7 +15,7 @@
 		F161810A183BCCFB00EF2830 /* ShopController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1618109183BCCFB00EF2830 /* ShopController.m */; };
 		F17B40EB182F82CD007C1E92 /* GoogleAPIShop.m in Sources */ = {isa = PBXBuildFile; fileRef = F17B40EA182F82CD007C1E92 /* GoogleAPIShop.m */; };
 		F193B636183CF8A7008CA8FC /* RouteController.m in Sources */ = {isa = PBXBuildFile; fileRef = F193B635183CF8A7008CA8FC /* RouteController.m */; };
-		F193B639183D2631008CA8FC /* MapSnapShotsController.m in Sources */ = {isa = PBXBuildFile; fileRef = F193B638183D2631008CA8FC /* MapSnapShotsController.m */; };
+		F193B639183D2631008CA8FC /* MapSnapshotsController.m in Sources */ = {isa = PBXBuildFile; fileRef = F193B638183D2631008CA8FC /* MapSnapshotsController.m */; };
 		F19B99CD1828F54400D9183D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F19B99CC1828F54400D9183D /* Foundation.framework */; };
 		F19B99CF1828F54400D9183D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F19B99CE1828F54400D9183D /* CoreGraphics.framework */; };
 		F19B99D11828F54400D9183D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F19B99D01828F54400D9183D /* UIKit.framework */; };
@@ -78,8 +78,8 @@
 		F17B40EA182F82CD007C1E92 /* GoogleAPIShop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoogleAPIShop.m; sourceTree = "<group>"; };
 		F193B634183CF8A7008CA8FC /* RouteController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RouteController.h; sourceTree = "<group>"; };
 		F193B635183CF8A7008CA8FC /* RouteController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RouteController.m; sourceTree = "<group>"; };
-		F193B637183D2631008CA8FC /* MapSnapShotsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapSnapShotsController.h; sourceTree = "<group>"; };
-		F193B638183D2631008CA8FC /* MapSnapShotsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapSnapShotsController.m; sourceTree = "<group>"; };
+		F193B637183D2631008CA8FC /* MapSnapshotsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapSnapshotsController.h; sourceTree = "<group>"; };
+		F193B638183D2631008CA8FC /* MapSnapshotsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapSnapshotsController.m; sourceTree = "<group>"; };
 		F19B99C91828F54400D9183D /* SmartShop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartShop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F19B99CC1828F54400D9183D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F19B99CE1828F54400D9183D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -284,8 +284,8 @@
 				F1618109183BCCFB00EF2830 /* ShopController.m */,
 				F193B634183CF8A7008CA8FC /* RouteController.h */,
 				F193B635183CF8A7008CA8FC /* RouteController.m */,
-				F193B637183D2631008CA8FC /* MapSnapShotsController.h */,
-				F193B638183D2631008CA8FC /* MapSnapShotsController.m */,
+				F193B637183D2631008CA8FC /* MapSnapshotsController.h */,
+				F193B638183D2631008CA8FC /* MapSnapshotsController.m */,
 				F10BB56D1830DA94006348EC /* DirectionsCell.h */,
 				F10BB56E1830DA94006348EC /* DirectionsCell.m */,
 				F1102DB4182AE378000B3677 /* StepByStepRouteViewController.h */,
@@ -483,7 +483,7 @@
 				F1D1BDF0183000D60007094F /* Leg.m in Sources */,
 				F1618107183BAAE700EF2830 /* DirectionCellModel.m in Sources */,
 				F1D1BDF3183008A20007094F /* Step.m in Sources */,
-				F193B639183D2631008CA8FC /* MapSnapShotsController.m in Sources */,
+				F193B639183D2631008CA8FC /* MapSnapshotsController.m in Sources */,
 				F1A8656618338D5100975F96 /* User.m in Sources */,
 				F1A8654B18337A9900975F96 /* Model.xcdatamodeld in Sources */,
 				F10BB56F1830DA94006348EC /* DirectionsCell.m in Sources */,
