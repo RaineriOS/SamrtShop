@@ -113,7 +113,7 @@
 # pragma mark - Map view segue
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([[segue identifier] isEqualToString:@"showRestaurant"]) {
+    if ([[segue identifier] isEqualToString:@"ShowRoute"]) {
         DirectionCellModel *directionModel = [directionModelsArr objectAtIndex:tableView.indexPathForSelectedRow.row];
         if ([directionModel isKindOfClass:[DirectionCellModel class]]) {
             
@@ -125,11 +125,11 @@
             delegate = [segue destinationViewController];
             if ([delegate respondsToSelector:@selector(drawAndDirectRoute:withDestinationAnnotation:)])
                 [delegate drawAndDirectRoute:directionModel.routes withDestinationAnnotation:annotationView];
-        } else {
         }
     }
 }
 
+// Don't perform the segue if the routes have not been recieived from the server
 -(BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender
 {
     DirectionCellModel *directionModel = [directionModelsArr objectAtIndex:tableView.indexPathForSelectedRow.row];

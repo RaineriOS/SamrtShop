@@ -102,7 +102,7 @@
                                             <outlet property="nameLabel" destination="eE9-45-S40" id="tXO-z3-31a"/>
                                             <outlet property="originLabel" destination="BEd-B4-R5i" id="vxO-hk-Oxf"/>
                                             <outlet property="tryAgainLabel" destination="ask-Wf-gQT" id="J9N-r1-zCK"/>
-                                            <segue destination="vXZ-lx-hvc" kind="push" identifier="showRestaurant" id="hGi-Xh-mX8"/>
+                                            <segue destination="vXZ-lx-hvc" kind="push" identifier="ShowRoute" id="hGi-Xh-mX8"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
