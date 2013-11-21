@@ -102,7 +102,6 @@
                 [tableView reloadData];
             });
             for (GoogleAPIShop *shop in shopController.shopsArr) {
-                NSLog(@"%@ %f %f", shop.SName, shop.location.lat, shop.location.lng);
                 SBJsonWriter *jsonWriter = [[SBJsonWriter alloc] init];
                 NSString *jsonString = [jsonWriter stringWithObject:@{
                                                                       @"name": shop.SName,

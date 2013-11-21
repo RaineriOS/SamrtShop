@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "GoogleAPIShop.h"
 
 @interface PostFromJSON : NSObject
 
@@ -20,5 +21,7 @@
 @property (nonatomic, strong) NSNumber * post_id;
 @property (nonatomic, strong) NSNumber * shop_id;
 @property (nonatomic, strong) NSNumber * user_id;
+
+@property (nonatomic, strong) GoogleAPIShop *shop;
 
 @end

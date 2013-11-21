@@ -11,17 +11,26 @@
 #import "AppDelegate.h"
 #import "NSMapping.h"
 #import "PostFromJSON.h"
+#import "MapSnapshotsController.h"
+#import "GoogleAPIShop.h"
+#import "Location.h"
 #import "WatsHotCell.h"
 
 @interface WatsHotViewController ()
 
 @property (strong, nonatomic) NSMutableArray *postsArr;
+@property (strong, nonatomic) NSMutableArray *locationImageArr;
+@property (strong, nonatomic) NSMutableArray *clothesImageArr;
 
 @end
 
 @implementation WatsHotViewController
-
+{
+    NSMutableArray *shopsArr;
+}
 @synthesize postsArr;
+@synthesize locationImageArr;
+@synthesize clothesImageArr;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -56,14 +65,43 @@
                           options:kNilOptions
                           error:&error];
     
+    NSDictionary *locationMapping = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                     @"lat", @"lat",
+                                     @"lng", @"lng",
+                                     nil];
+    NSDictionary *shopMapping = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                 @"SName", @"name",
+                                 
+                                 @{
+                                   @"property": @"location", // The name in the class
+                                   @"class": [Location class],
+                                   @"mapping": locationMapping
+                                   }, @"location",
+                                 nil];
     NSDictionary *postMapping = [[NSDictionary alloc] initWithObjectsAndKeys:
                                  @"image_name", @"image_name",
                                  @"content", @"content",
+                                 @{
+                                   @"property": @"shop", // The name in the class
+                                   @"class": [GoogleAPIShop class],
+                                   @"mapping": shopMapping
+                                   }, @"shop",
                                  nil];
+    shopsArr = [[NSMutableArray alloc] init];
+    clothesImageArr = [[NSMutableArray alloc] init];
     for (NSDictionary *postDict in [json objectForKey:@"results"]) {
         PostFromJSON *newPost = [NSMapping makeObject:[PostFromJSON class] WithMapping:postMapping fromJSON:postDict];
         [postsArr addObject:newPost];
+        [shopsArr addObject:newPost.shop];
+        NSString *urlString = [[NSString alloc] initWithFormat:@"http://localhost:3000/media/%@", newPost.image_name, nil];
+        NSLog(@"%@", urlString);
+        NSURL *url = [[NSURL alloc] initWithString:urlString];
+        NSData *data = [NSData dataWithContentsOfURL:url];
+        UIImage *image = [[UIImage alloc] initWithData:data];
+        [clothesImageArr addObject:image];
     }
+    MapSnapshotsController *snapshotImages = [[MapSnapshotsController alloc] initWithShops:shopsArr withMapView:self.mapView];
+    locationImageArr = snapshotImages.imagesArr;
     [self.collectionView reloadData];
 }
 
@@ -79,7 +117,16 @@
     WatsHotCell *cell=[collectionView dequeueReusableCellWithReuseIdentifier:@"Cell" forIndexPath:indexPath];
     
     // cell.backgroundColor=[UIColor greenColor];
-    cell.contentLabel.text = [[postsArr objectAtIndex:indexPath.row] content];
+    PostFromJSON *post = [postsArr objectAtIndex:indexPath.row];
+    cell.contentLabel.text = post.content;
+    cell.shopNameLabel.text = post.shop.SName;
+    cell.clothImageView.image = [clothesImageArr objectAtIndex:indexPath.row];
+    if ([[locationImageArr objectAtIndex:indexPath.row] isKindOfClass:[UIImage class]]) {
+        cell.locationImageView.image = [locationImageArr objectAtIndex:indexPath.row];
+    } else {
+        MapSnapshotsController *snapshotImages = [[MapSnapshotsController alloc] initWithShops:shopsArr withMapView:self.mapView];
+        locationImageArr = snapshotImages.imagesArr;
+    }
     return cell;
 }
 

@@ -132,8 +132,10 @@ app.get('/post', function(req, res){
 				shop: {
 					id: row.shop_id,
 					name: row.name,
-					lat: row.lat,
-					lng: row.lng
+					location: {
+						lat: row.lat,
+						lng: row.lng
+					}
 				}
 			};
 			posts.push(post);

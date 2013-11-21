@@ -10,5 +10,8 @@
 
 @interface WatsHotCell : UICollectionViewCell
 @property (strong, nonatomic) IBOutlet UILabel *contentLabel;
+@property (strong, nonatomic) IBOutlet UIImageView *locationImageView;
+@property (strong, nonatomic) IBOutlet UILabel *shopNameLabel;
+@property (strong, nonatomic) IBOutlet UIImageView *clothImageView;
 
 @end
