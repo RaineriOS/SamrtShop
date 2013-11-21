@@ -20,6 +20,70 @@ app.use("/media", express.static('/Users/macowner/Pictures/smartShop'));
 app.use(app.router);
 app.use(express.errorHandler());
 
+// This queue is filled with shops to be checked if they exists in the db or not
+var shopsInfoQueue = [];
+// This queue is filled with shops which defienitly don't exist in db
+var insertIntoShopsQueue = [];
+
+// A function which is run every 1 sec in order to see anything new has been put inside the info queue
+function emptyShopInfoQueue() {
+	var numShops = shopsInfoQueue.length;
+	for (var i=0; i<numShops; i++) {
+		var newShopInfo = shopsInfoQueue[i];
+		// call the exist function which checks the database
+		checkShopExists.apply(null, newShopInfo);
+	}
+	shopsInfoQueue.splice(0, numShops);
+}
+
+// called every 2 secs in order to empty the insert queue and create new shops in the db
+function emptyInsertIntoShopsQueue(name, lat, lng) {
+	if(shopsInfoQueue.length == 0) {
+		var recursiveCallBack = function () {
+			var newShopInfo = insertIntoShopsQueue.pop();
+			if (insertIntoShopsQueue.length == 0 && newShopInfo != undefined)
+				insertIntoShops.apply(null, newShopInfo);
+			else if (newShopInfo != undefined){
+				newShopInfo.push(recursiveCallBack);
+				insertIntoShops.apply(null, newShopInfo);
+			}
+		};
+		recursiveCallBack();
+
+	}
+}
+
+// Check if the shop exists in table or not
+function checkShopExists(name, lat, lng) {
+	var db = new sqlite3.Database(dbFile);
+	db.serialize(function() {
+		var stmt = db.prepare("SELECT * FROM shops WHERE name=? AND lat=? AND lng=?");
+		stmt.all(name, lat, lng, function(err, rows) {
+			if (rows == undefined || rows.length == 0 ) {
+				insertIntoShopsQueue.push([name, lat, lng]);
+			}
+		});
+		stmt.finalize();
+	});
+}
+
+// The function which is used to insert into shops table
+function insertIntoShops(name, lat, lng, callback) {
+	var db = new sqlite3.Database(dbFile);
+	var stmt = db.prepare("INSERT INTO shops (name, lat, lng) VALUES (?, ?, ?)");
+	stmt.run([name, lat, lng], function () {
+		if(callback)
+			callback();
+	});
+	stmt.finalize();
+	db.close();
+}
+
+
+// Intervals of updating the info queue and insert queues
+setInterval(emptyShopInfoQueue, 1000);
+setInterval(emptyInsertIntoShopsQueue, 2000);
+
 
 function getShop(name, lat, lng, callback) {
 	var db = new sqlite3.Database(dbFile);
@@ -72,19 +136,7 @@ app.get('/user/:username', function(req, res){
 
 // Create new shop
 app.post('/shop', function (req, res){
-	var db = new sqlite3.Database(dbFile);
-	var stmt = db.prepare("SELECT * FROM shops WHERE name=? AND lat=? AND lng=?");
-	stmt.all(req.body.name, req.body.lat, req.body.lng, function(err, rows) {
-		if (rows == undefined || rows.length == 0 ) {
-			var _db = new sqlite3.Database(dbFile);
-			var _stmt = _db.prepare("INSERT INTO shops (name, lat, lng) VALUES (?, ?, ?)");
-			_stmt.run([req.body.name, req.body.lat, req.body.lng]);
-			_stmt.finalize();
-			_db.close();
-		}
-	});
-	stmt.finalize();
-	db.close();
+	shopsInfoQueue.push([req.body.name, req.body.lat, req.body.lng]);
 	res.json({saved:'success'});
 });
 // Create a new post - also when the shop detail is give,
