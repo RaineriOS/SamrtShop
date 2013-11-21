@@ -16,6 +16,8 @@
 		F17B40EB182F82CD007C1E92 /* GoogleAPIShop.m in Sources */ = {isa = PBXBuildFile; fileRef = F17B40EA182F82CD007C1E92 /* GoogleAPIShop.m */; };
 		F193B636183CF8A7008CA8FC /* RouteController.m in Sources */ = {isa = PBXBuildFile; fileRef = F193B635183CF8A7008CA8FC /* RouteController.m */; };
 		F193B639183D2631008CA8FC /* MapSnapshotsController.m in Sources */ = {isa = PBXBuildFile; fileRef = F193B638183D2631008CA8FC /* MapSnapshotsController.m */; };
+		F193B63D183DEAA3008CA8FC /* WatsHotViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F193B63C183DEAA3008CA8FC /* WatsHotViewController.m */; };
+		F193B640183DEC94008CA8FC /* WatsHotCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F193B63F183DEC94008CA8FC /* WatsHotCell.m */; };
 		F19B99CD1828F54400D9183D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F19B99CC1828F54400D9183D /* Foundation.framework */; };
 		F19B99CF1828F54400D9183D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F19B99CE1828F54400D9183D /* CoreGraphics.framework */; };
 		F19B99D11828F54400D9183D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F19B99D01828F54400D9183D /* UIKit.framework */; };
@@ -80,6 +82,10 @@
 		F193B635183CF8A7008CA8FC /* RouteController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RouteController.m; sourceTree = "<group>"; };
 		F193B637183D2631008CA8FC /* MapSnapshotsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapSnapshotsController.h; sourceTree = "<group>"; };
 		F193B638183D2631008CA8FC /* MapSnapshotsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapSnapshotsController.m; sourceTree = "<group>"; };
+		F193B63B183DEAA3008CA8FC /* WatsHotViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WatsHotViewController.h; sourceTree = "<group>"; };
+		F193B63C183DEAA3008CA8FC /* WatsHotViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WatsHotViewController.m; sourceTree = "<group>"; };
+		F193B63E183DEC94008CA8FC /* WatsHotCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WatsHotCell.h; sourceTree = "<group>"; };
+		F193B63F183DEC94008CA8FC /* WatsHotCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WatsHotCell.m; sourceTree = "<group>"; };
 		F19B99C91828F54400D9183D /* SmartShop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartShop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F19B99CC1828F54400D9183D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F19B99CE1828F54400D9183D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -185,11 +191,23 @@
 		F17B40ED182F82ED007C1E92 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				F193B63A183DEA85008CA8FC /* wat's hot */,
 				F1A8656C1833985F00975F96 /* Settings Bundle And Login */,
 				F1A8653E18329E3900975F96 /* Social Networks */,
 				F1A8653D18329E2900975F96 /* Find Shops */,
 			);
 			name = Controller;
+			sourceTree = "<group>";
+		};
+		F193B63A183DEA85008CA8FC /* wat's hot */ = {
+			isa = PBXGroup;
+			children = (
+				F193B63B183DEAA3008CA8FC /* WatsHotViewController.h */,
+				F193B63C183DEAA3008CA8FC /* WatsHotViewController.m */,
+				F193B63E183DEC94008CA8FC /* WatsHotCell.h */,
+				F193B63F183DEC94008CA8FC /* WatsHotCell.m */,
+			);
+			name = "wat's hot";
 			sourceTree = "<group>";
 		};
 		F19B99C01828F54400D9183D = {
@@ -498,7 +516,9 @@
 				F1A8655818337FDE00975F96 /* Shop.m in Sources */,
 				F161810A183BCCFB00EF2830 /* ShopController.m in Sources */,
 				F1A8655E18337FDE00975F96 /* Post.m in Sources */,
+				F193B640183DEC94008CA8FC /* WatsHotCell.m in Sources */,
 				F1D1BDED183000230007094F /* Location.m in Sources */,
+				F193B63D183DEAA3008CA8FC /* WatsHotViewController.m in Sources */,
 				F1C226FD1828FDC8001AB3E8 /* RootViewController.m in Sources */,
 				F19B99D91828F54400D9183D /* main.m in Sources */,
 				F10774051834EDF1002F6EEF /* GetLocationShopViewController.m in Sources */,
