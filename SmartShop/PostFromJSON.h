@@ -10,15 +10,15 @@
 
 @interface PostFromJSON : NSObject
 
-@property (nonatomic, retain) NSNumber * burning;
-@property (nonatomic, retain) NSNumber * cold;
-@property (nonatomic, retain) NSString * content;
-@property (nonatomic, retain) NSNumber * cool;
-@property (nonatomic, retain) NSNumber * freezing;
-@property (nonatomic, retain) NSNumber * hot;
-@property (nonatomic, retain) NSString * image_name;
-@property (nonatomic, retain) NSNumber * post_id;
-@property (nonatomic, retain) NSNumber * shop_id;
-@property (nonatomic, retain) NSNumber * user_id;
+@property (nonatomic, strong) NSNumber * burning;
+@property (nonatomic, strong) NSNumber * cold;
+@property (nonatomic, strong) NSString * content;
+@property (nonatomic, strong) NSNumber * cool;
+@property (nonatomic, strong) NSNumber * freezing;
+@property (nonatomic, strong) NSNumber * hot;
+@property (nonatomic, strong) NSString * image_name;
+@property (nonatomic, strong) NSNumber * post_id;
+@property (nonatomic, strong) NSNumber * shop_id;
+@property (nonatomic, strong) NSNumber * user_id;
 
 @end

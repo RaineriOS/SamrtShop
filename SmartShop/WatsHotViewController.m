@@ -22,7 +22,7 @@
 @implementation WatsHotViewController
 
 @synthesize postsArr;
-@synthesize collectionView;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -64,7 +64,7 @@
         PostFromJSON *newPost = [NSMapping makeObject:[PostFromJSON class] WithMapping:postMapping fromJSON:postDict];
         [postsArr addObject:newPost];
     }
-    [collectionView reloadData];
+    [self.collectionView reloadData];
 }
 
 - (void)didReceiveMemoryWarning

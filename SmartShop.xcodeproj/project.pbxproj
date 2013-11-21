@@ -10,6 +10,7 @@
 		C9CE22E0EEF642DFB37EBB24 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 233F158B0E4145AAB319A6FD /* libPods.a */; };
 		F10BB56F1830DA94006348EC /* DirectionsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F10BB56E1830DA94006348EC /* DirectionsCell.m */; };
 		F1102DB6182AE378000B3677 /* StepByStepRouteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1102DB5182AE378000B3677 /* StepByStepRouteViewController.m */; };
+		F12F2FCF183E5AD4002EED01 /* ShopFromJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = F12F2FCE183E5AD3002EED01 /* ShopFromJSON.m */; };
 		F1618107183BAAE700EF2830 /* DirectionCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F1618106183BAAE700EF2830 /* DirectionCellModel.m */; };
 		F161810A183BCCFB00EF2830 /* ShopController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1618109183BCCFB00EF2830 /* ShopController.m */; };
 		F16EC250183E42A300C4D857 /* default-image.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F16EC24F183E42A300C4D857 /* default-image.jpg */; };
@@ -71,6 +72,8 @@
 		F10BB56E1830DA94006348EC /* DirectionsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DirectionsCell.m; sourceTree = "<group>"; };
 		F1102DB4182AE378000B3677 /* StepByStepRouteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StepByStepRouteViewController.h; sourceTree = "<group>"; };
 		F1102DB5182AE378000B3677 /* StepByStepRouteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StepByStepRouteViewController.m; sourceTree = "<group>"; };
+		F12F2FCD183E5AD3002EED01 /* ShopFromJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopFromJSON.h; sourceTree = "<group>"; };
+		F12F2FCE183E5AD3002EED01 /* ShopFromJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopFromJSON.m; sourceTree = "<group>"; };
 		F1618105183BAAE700EF2830 /* DirectionCellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DirectionCellModel.h; sourceTree = "<group>"; };
 		F1618106183BAAE700EF2830 /* DirectionCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DirectionCellModel.m; sourceTree = "<group>"; };
 		F1618108183BCCFB00EF2830 /* ShopController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopController.h; sourceTree = "<group>"; };
@@ -218,6 +221,8 @@
 			children = (
 				F193B642183E127E008CA8FC /* PostFromJSON.h */,
 				F193B643183E127E008CA8FC /* PostFromJSON.m */,
+				F12F2FCD183E5AD3002EED01 /* ShopFromJSON.h */,
+				F12F2FCE183E5AD3002EED01 /* ShopFromJSON.m */,
 			);
 			name = "Wats Hot Posts";
 			sourceTree = "<group>";
@@ -515,6 +520,7 @@
 				F1D1BDF3183008A20007094F /* Step.m in Sources */,
 				F193B644183E127E008CA8FC /* PostFromJSON.m in Sources */,
 				F193B639183D2631008CA8FC /* MapSnapshotsController.m in Sources */,
+				F12F2FCF183E5AD4002EED01 /* ShopFromJSON.m in Sources */,
 				F1A8656618338D5100975F96 /* User.m in Sources */,
 				F1A8654B18337A9900975F96 /* Model.xcdatamodeld in Sources */,
 				F10BB56F1830DA94006348EC /* DirectionsCell.m in Sources */,
