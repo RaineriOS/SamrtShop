@@ -85,6 +85,13 @@
                                                     <rect key="frame" x="204" y="74" width="75" height="74"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Please Try Again in 1 Minute" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="217" translatesAutoresizingMaskIntoConstraints="NO" id="ask-Wf-gQT">
+                                                    <rect key="frame" x="35" y="38" width="217" height="71"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                                    <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
@@ -94,6 +101,7 @@
                                             <outlet property="mapImage" destination="ERT-Pc-kdZ" id="VF8-OW-Pjc"/>
                                             <outlet property="nameLabel" destination="eE9-45-S40" id="tXO-z3-31a"/>
                                             <outlet property="originLabel" destination="BEd-B4-R5i" id="vxO-hk-Oxf"/>
+                                            <outlet property="tryAgainLabel" destination="ask-Wf-gQT" id="J9N-r1-zCK"/>
                                             <segue destination="vXZ-lx-hvc" kind="push" identifier="showRestaurant" id="hGi-Xh-mX8"/>
                                         </connections>
                                     </tableViewCell>

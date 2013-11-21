@@ -18,6 +18,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    NSString *documentDirectory = [[NSBundle mainBundle] resourcePath];
+    NSLog(@"%@", documentDirectory);
     [self registerDefaults];
     return YES;
 }

@@ -16,5 +16,6 @@
 @property (strong, nonatomic) IBOutlet UILabel *durationLabel;
 @property (strong, nonatomic) IBOutlet UILabel *distanceLabel;
 @property (strong, nonatomic) IBOutlet UILabel *destinationLabel;
+@property (strong, nonatomic) IBOutlet UILabel *tryAgainLabel;
 
 @end

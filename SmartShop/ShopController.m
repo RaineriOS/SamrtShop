@@ -8,12 +8,15 @@
 
 #import "ShopController.h"
 #import <MapKit/MapKit.h>
+#import <SBJson.h>
 
 #import "Location.h"
 #import "Photo.h"
 #import "DirectionCellModel.h"
 #import "GoogleAPIShop.h"
 #import "NSMapping.h"
+#import "AppDelegate.h"
+#import "Shop.h" // The shop for core data
 
 // Google Route finder which is not currently used in the app
 #import "Leg.h"
@@ -95,9 +98,71 @@
                 [shopsArr addObject:newShop];
             }
         }
+        [self updateShopsTableOnlineAndOffline];
         if (block)
             block();
     }];
+}
+
+// Update the table for both offline and online. So check core data, if the shop does not exists
+// save it locally and then send the shop info to the server to be saved as well
+-(void) updateShopsTableOnlineAndOffline
+{
+    // Also post all of the shops which it gets to the server in order to create a better and more complete database
+    for (GoogleAPIShop *shop in shopsArr) {
+        // Test listing all FailedBankInfos from the store
+        AppDelegate *appD = [[UIApplication sharedApplication] delegate];
+        NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:
+                                  @"name=%@ AND lat=%f AND lng=%f", shop.SName, shop.location.lat, shop.location.lng];
+        [fetchRequest setPredicate:predicate];
+        
+        NSEntityDescription *entity = [NSEntityDescription entityForName:@"Shop"
+                                                  inManagedObjectContext:[appD managedObjectContext]];
+        [fetchRequest setEntity:entity];
+        NSError *fetchError;
+        NSArray *fetchedObjects = [[appD managedObjectContext] executeFetchRequest:fetchRequest error:&fetchError];
+        
+        // If it does not exist, then save it to the core data and send a copy to the server
+        if (fetchedObjects.count == 0 ) {
+            // Save shop to core data
+            Shop *coreDatashop = [NSEntityDescription
+                                  insertNewObjectForEntityForName:@"Shop"
+                                  inManagedObjectContext:[appD managedObjectContext]];
+            coreDatashop.name = shop.SName;
+            coreDatashop.lat = [[NSNumber alloc] initWithFloat:shop.location.lat];
+            coreDatashop.lng = [[NSNumber alloc] initWithFloat
+                                :shop.location.lng];
+            NSError *error;
+            if (![[appD managedObjectContext] save:&error]) {
+                NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
+            }
+            
+            
+            // Now upload to the server in order to save it there as well
+            SBJsonWriter *jsonWriter = [[SBJsonWriter alloc] init];
+            NSString *jsonString = [jsonWriter stringWithObject:@{
+                                                                  @"name": shop.SName,
+                                                                  @"lat":[NSString stringWithFormat:@"%f", shop.location.lat],
+                                                                  @"lng":[NSString stringWithFormat:@"%f", shop.location.lng]
+                                                                  }];
+            NSData *postData = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
+            NSString *postLength = [NSString stringWithFormat:@"%d", [postData length]];
+            NSString *urlString = @"http://localhost:3000/shop";
+            NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+            [request setURL:[NSURL URLWithString:urlString]];
+            [request setHTTPMethod:@"POST"];
+            [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
+            [request setValue:@"application/json;charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
+            
+            [request setHTTPBody:postData];
+            // send the request (submit the form) and get the response
+            NSData *returnData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
+            NSString *returnString = [[NSString alloc] initWithData:returnData encoding:NSUTF8StringEncoding];
+            
+            NSLog(@"%@", returnString);
+        }
+    }
 }
 
 

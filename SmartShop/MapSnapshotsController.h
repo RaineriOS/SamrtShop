@@ -9,10 +9,13 @@
 #import <Foundation/Foundation.h>
 #import <MapKit/MapKit.h>
 
+#import "RootViewController.h"
+
 @interface MapSnapshotsController : NSObject
 
 @property (strong, nonatomic) MKMapView *mapView;
 @property (strong, nonatomic) NSMutableArray *imagesArr;
+@property (weak, nonatomic) id<RootViewDelegate> delegate;
 
 -(id) initWithShops:(NSMutableArray *)shopsArr withMapView:(MKMapView *) mapView;
 

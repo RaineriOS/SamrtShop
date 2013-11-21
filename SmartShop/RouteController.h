@@ -9,10 +9,13 @@
 #import <Foundation/Foundation.h>
 #import <MapKit/MapKit.h>
 
+#import "RootViewController.h"
+
 @interface RouteController : NSObject
 
 @property (strong, nonatomic) NSMutableArray *routesArr;
+@property (weak, nonatomic) id<RootViewDelegate> delegate;
 
--(id) initWithShops:(NSMutableArray *) shopsArr  andLocation:(CLLocationCoordinate2D) origin;
+-(id)initWithShops:(NSMutableArray *)shopsArr andLocation:(CLLocationCoordinate2D)origin;
 
 @end

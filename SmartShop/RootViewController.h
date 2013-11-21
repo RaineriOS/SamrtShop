@@ -10,7 +10,14 @@
 #import <MapKit/MapKit.h>
 #import "StepByStepRouteViewController.h"
 
-@interface RootViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
+@protocol RootViewDelegate <NSObject>
+
+@required
+-(void) updateTableView;
+
+@end
+
+@interface RootViewController : UIViewController <RootViewDelegate, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) IBOutlet UITextField *locationTextField;

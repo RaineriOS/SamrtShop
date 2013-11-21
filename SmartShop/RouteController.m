@@ -29,7 +29,7 @@
     return self;
 }
 
--(id)initWithShops:(NSMutableArray *)shopsArr andLocation:(CLLocationCoordinate2D)origin
+-(id)initWithShops:(NSMutableArray *)shopsArr andLocation:(CLLocationCoordinate2D)origin 
 {
     self = [self init];
     if (self) {
@@ -42,21 +42,30 @@
             double lng = shop.location.lng;
             CLLocationCoordinate2D dest = CLLocationCoordinate2DMake(lat, lng);
             [self appleGetDirectionsFrom:origin to:dest completionBlock:^(MKDirectionsResponse *response){
-                MKRoute *route = [[response routes] lastObject];
-                DirectionCellModel *newDirection = [[DirectionCellModel alloc] init];
-                [newDirection
-                 setValuesForKeysWithDictionary:@{
-                                                  @"shop": shop,
-                                                  @"origin": response.source.name,
-                                                  @"destination": response.destination.name,
-                                                  @"distance": [[NSString alloc]
-                                                                initWithFormat:@"%0.2f m", route.distance, nil],
-                                                  @"duration":[[NSString alloc]
-                                                               initWithFormat:@"%0.0f minutes",
-                                                               route.expectedTravelTime/60, nil],
-                                                  @"routes":[response routes]
-                                                  }];
-                [routesArr replaceObjectAtIndex:i withObject:newDirection];
+                if (response) {
+                    MKRoute *route = [[response routes] lastObject];
+                    DirectionCellModel *newDirection = [[DirectionCellModel alloc] init];
+                    [newDirection
+                     setValuesForKeysWithDictionary:@{
+                                                      @"shop": shop,
+                                                      @"origin": response.source.name,
+                                                      @"destination": response.destination.name,
+                                                      @"distance": [[NSString alloc]
+                                                                    initWithFormat:@"%0.2f m", route.distance, nil],
+                                                      @"duration":[[NSString alloc]
+                                                                   initWithFormat:@"%0.0f minutes",
+                                                                   route.expectedTravelTime/60, nil],
+                                                      @"routes":[response routes]
+                                                      }];
+                    if (routesArr.count > i) {
+                        [routesArr replaceObjectAtIndex:i withObject:newDirection];
+                    }
+                    if ([self.delegate respondsToSelector:@selector(updateTableView)]) {
+                        [self.delegate updateTableView];
+                    }
+                } else {
+                    NSLog(@"empty");
+                }
             }];
             i++;
         }
@@ -90,7 +99,7 @@
     int __block numResponsesReceived = 0;
     void(^handleResponse)(MKDirectionsResponse *response)=^(MKDirectionsResponse *response){
         numResponsesReceived += 1;
-        if (numResponsesReceived==3)
+        if (numResponsesReceived==2)
             block(response);
     };
     [direction calculateDirectionsWithCompletionHandler:^(MKDirectionsResponse *response, NSError *error) {
@@ -111,30 +120,6 @@
                  handleResponse(response);
              }
          }];
-        handleResponse(response);
-        // NSArray *arrRoutes = [response routes];
-        /*
-         // Showing steps and info on that
-        [arrRoutes enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-            
-            MKRoute *rout = obj;
-            
-            
-            MKPolyline *line = [rout polyline];
-            // [self.mkMapView addOverlay:line];
-            NSLog(@"Rout Name : %@",rout.name);
-            NSLog(@"Total Distance (in Meters) :%f",rout.distance);
-            
-            NSArray *steps = [rout steps];
-            
-            NSLog(@"Total Steps : %d",[steps count]);
-            
-            [steps enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-                NSLog(@"Rout Instruction : %@",[obj instructions]);
-                // NSLog(@"Rout Distance : %f",[obj distance]);
-            }];
-        }];
-         */
     }];
 }
 
