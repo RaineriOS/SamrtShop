@@ -16,12 +16,33 @@ app.use(express.logger('dev'));
 // app.use(express.urlencoded());
 // app.use(express.multipart());
 app.use(express.bodyParser({ keepExtensions: true, uploadDir: '/Users/macowner/Pictures/smartShop' }));
+app.use("/media", express.static('/Users/macowner/Pictures/smartShop'));
 app.use(app.router);
 app.use(express.errorHandler());
 
+
+function getShop(name, lat, lng, callback) {
+	var db = new sqlite3.Database(dbFile);
+	var stmt = db.prepare("SELECT * FROM shops WHERE name=? AND lat=? AND lng=?");
+	stmt.all(name, lat, lng, function(err, rows) {
+		if(callback)
+			callback(err, rows);
+	});
+	stmt.finalize();
+	db.close();
+}
+
+function insertIntoPosts(userID, shopID, imageName, content){
+	var db = new sqlite3.Database(dbFile);
+	var stmt = db.prepare("INSERT INTO posts (user_id, shop_id, image_name, content) VALUES (?, ?, ?, ?)");
+	stmt.run([userID, shopID, imageName, content]);
+	stmt.finalize();
+	db.close();
+}
+
 app.post('/image', function (req, res){
-	console.log(req.body);
-	console.log(req.files);
+	// console.log(req.body);
+	// console.log(req.files);
 	res.json({saved:'success'});
 });
 // Create new user
@@ -52,28 +73,72 @@ app.get('/user/:username', function(req, res){
 // Create new shop
 app.post('/shop', function (req, res){
 	var db = new sqlite3.Database(dbFile);
-	var stmt = db.prepare("INSERT INTO shops (name, lat, lng) VALUES (?, ?, ?)");
-	stmt.run([req.body.name, req.body.lat, req.body.lng]);
+	var stmt = db.prepare("SELECT * FROM shops WHERE name=? AND lat=? AND lng=?");
+	stmt.all(req.body.name, req.body.lat, req.body.lng, function(err, rows) {
+		if (rows == undefined || rows.length == 0 ) {
+			var _db = new sqlite3.Database(dbFile);
+			var _stmt = _db.prepare("INSERT INTO shops (name, lat, lng) VALUES (?, ?, ?)");
+			_stmt.run([req.body.name, req.body.lat, req.body.lng]);
+			_stmt.finalize();
+			_db.close();
+		}
+	});
 	stmt.finalize();
 	db.close();
 	res.json({saved:'success'});
 });
-
+// Create a new post - also when the shop detail is give,
+// if the shop does not exist, create it.
 app.post('/post', function (req, res){
-	// console.log(req.body);
-	var db = new sqlite3.Database(dbFile);
-	var stmt = db.prepare("INSERT INTO posts (user_id, shop_id, image_name, content) VALUES (?, ?, ?, ?)");
-	stmt.run([req.body.user_id, req.body.shop_id,
-			  req.body.image_name, req.body.content]);
-	stmt.finalize();
-	db.close();
-	res.json({saved:'success'});
+	req.body = JSON.parse(req.body.body);
+	getShop(req.body.name, req.body.lat, req.body.lng, function (err, rows){
+		if (rows == undefined || rows.length == 0 ) {
+			var db = new sqlite3.Database(dbFile);
+			var stmt = db.prepare("INSERT INTO shops (name, lat, lng) VALUES (?, ?, ?)");
+			stmt.run([req.body.name, req.body.lat, req.body.lng], function(){
+				insertIntoPosts(req.body.user_id, this.lastID, imageName,
+					req.body.content);
+				res.json({saved:'success'});
+			});
+			stmt.finalize();
+			db.close();
+		} else {
+			insertIntoPosts(req.body.user_id, rows[0].id, imageName,
+					req.body.content);
+			res.json({saved:'success'});
+		}
+	});
+	var imagePathArr = req.files.recording.path.split("/");
+	var imageName = imagePathArr[imagePathArr.length-1];
 });
 
 app.get('/post', function(req, res){
 	var db = new sqlite3.Database(dbFile);
-	db.all("SELECT * FROM posts", function(err, rows) {
-		res.json(rows);
+	db.all("SELECT * FROM posts INNER JOIN shops WHERE shops.id == posts.shop_id", function(err, rows) {
+		// Turn the returned rows which are joined into obejcts which can 
+		// represent objects of posts and shops
+		var posts = [];
+		for (var i=0; i<rows.length; i++) {
+			var row = rows[i];
+			var post = {
+				user_id: row.user_id,
+				burning: row.burning,
+				hot: row.hot,
+				cool: row.cool,
+				cold: row.cold,
+				freezing: row.freezing,
+				image_name: row.image_name,
+				content: row.content,
+				shop: {
+					id: row.shop_id,
+					name: row.name,
+					lat: row.lat,
+					lng: row.lng
+				}
+			};
+			posts.push(post);
+		}
+		res.json({results:posts});
 		db.close();
 	});
 });
