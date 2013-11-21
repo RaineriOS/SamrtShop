@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface WatsHotCell : UICollectionViewCell
+@property (strong, nonatomic) IBOutlet UILabel *contentLabel;
 
 @end

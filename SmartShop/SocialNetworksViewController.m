@@ -35,10 +35,10 @@
 {
     [super viewDidLoad];
     [[self.textViewPostContent layer] setBorderColor:[[UIColor grayColor] CGColor]];
-    [[self.textViewPostContent layer] setBorderWidth:2.3];
+    [[self.textViewPostContent layer] setBorderWidth:0.3];
     
     [[self.imageView layer] setBorderColor:[[UIColor grayColor] CGColor]];
-    [[self.imageView layer] setBorderWidth:2.3];
+    [[self.imageView layer] setBorderWidth:0.3];
     
     _accountStore = [[ACAccountStore alloc] init];
     
@@ -59,7 +59,6 @@
 
     // Map click handler
     UILongPressGestureRecognizer *recognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(addPin:)];
-    //[recognizer setNumberOfTapsRequired:1];
     [self.mapView addGestureRecognizer:recognizer];
     locationManager = [[CLLocationManager alloc] init];
     locationManager.distanceFilter = kCLDistanceFilterNone;
@@ -200,8 +199,13 @@
 - (IBAction)post:(id)sender
 {
     SBJsonWriter *jsonWriter = [[SBJsonWriter alloc] init];
-    NSString *jsonString = [jsonWriter stringWithObject:@{@"content": self.textViewPostContent.text}];
-    NSString *urlString = @"http://localhost:3000/image";
+    NSString *jsonString = [jsonWriter stringWithObject:@{
+                                                      @"content": self.textViewPostContent.text,
+                                                      @"name": self.shopNameTextField.text, // name of the shop
+                                                      @"lat":[NSString stringWithFormat:@"%f", self.annotationView.coordinate.latitude],
+                                                      @"lng":[NSString stringWithFormat:@"%f", self.annotationView.coordinate.longitude]
+                                                      }];
+    NSString *urlString = @"http://localhost:3000/post";
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     [request setURL:[NSURL URLWithString:urlString]];
     [request setHTTPMethod:@"POST"];

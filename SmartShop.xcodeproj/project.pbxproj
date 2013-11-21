@@ -12,11 +12,13 @@
 		F1102DB6182AE378000B3677 /* StepByStepRouteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1102DB5182AE378000B3677 /* StepByStepRouteViewController.m */; };
 		F1618107183BAAE700EF2830 /* DirectionCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F1618106183BAAE700EF2830 /* DirectionCellModel.m */; };
 		F161810A183BCCFB00EF2830 /* ShopController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1618109183BCCFB00EF2830 /* ShopController.m */; };
+		F16EC250183E42A300C4D857 /* default-image.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F16EC24F183E42A300C4D857 /* default-image.jpg */; };
 		F17B40EB182F82CD007C1E92 /* GoogleAPIShop.m in Sources */ = {isa = PBXBuildFile; fileRef = F17B40EA182F82CD007C1E92 /* GoogleAPIShop.m */; };
 		F193B636183CF8A7008CA8FC /* RouteController.m in Sources */ = {isa = PBXBuildFile; fileRef = F193B635183CF8A7008CA8FC /* RouteController.m */; };
 		F193B639183D2631008CA8FC /* MapSnapshotsController.m in Sources */ = {isa = PBXBuildFile; fileRef = F193B638183D2631008CA8FC /* MapSnapshotsController.m */; };
 		F193B63D183DEAA3008CA8FC /* WatsHotViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F193B63C183DEAA3008CA8FC /* WatsHotViewController.m */; };
 		F193B640183DEC94008CA8FC /* WatsHotCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F193B63F183DEC94008CA8FC /* WatsHotCell.m */; };
+		F193B644183E127E008CA8FC /* PostFromJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = F193B643183E127E008CA8FC /* PostFromJSON.m */; };
 		F19B99CD1828F54400D9183D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F19B99CC1828F54400D9183D /* Foundation.framework */; };
 		F19B99CF1828F54400D9183D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F19B99CE1828F54400D9183D /* CoreGraphics.framework */; };
 		F19B99D11828F54400D9183D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F19B99D01828F54400D9183D /* UIKit.framework */; };
@@ -73,6 +75,7 @@
 		F1618106183BAAE700EF2830 /* DirectionCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DirectionCellModel.m; sourceTree = "<group>"; };
 		F1618108183BCCFB00EF2830 /* ShopController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopController.h; sourceTree = "<group>"; };
 		F1618109183BCCFB00EF2830 /* ShopController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopController.m; sourceTree = "<group>"; };
+		F16EC24F183E42A300C4D857 /* default-image.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "default-image.jpg"; sourceTree = "<group>"; };
 		F17B40E9182F82CD007C1E92 /* GoogleAPIShop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoogleAPIShop.h; sourceTree = "<group>"; };
 		F17B40EA182F82CD007C1E92 /* GoogleAPIShop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoogleAPIShop.m; sourceTree = "<group>"; };
 		F193B634183CF8A7008CA8FC /* RouteController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RouteController.h; sourceTree = "<group>"; };
@@ -83,6 +86,8 @@
 		F193B63C183DEAA3008CA8FC /* WatsHotViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WatsHotViewController.m; sourceTree = "<group>"; };
 		F193B63E183DEC94008CA8FC /* WatsHotCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WatsHotCell.h; sourceTree = "<group>"; };
 		F193B63F183DEC94008CA8FC /* WatsHotCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WatsHotCell.m; sourceTree = "<group>"; };
+		F193B642183E127E008CA8FC /* PostFromJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostFromJSON.h; sourceTree = "<group>"; };
+		F193B643183E127E008CA8FC /* PostFromJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostFromJSON.m; sourceTree = "<group>"; };
 		F19B99C91828F54400D9183D /* SmartShop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartShop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F19B99CC1828F54400D9183D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F19B99CE1828F54400D9183D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -178,6 +183,7 @@
 			children = (
 				F1D1BDE5182FD3790007094F /* NSMapping.h */,
 				F1D1BDE6182FD3790007094F /* NSMapping.m */,
+				F193B641183E0C79008CA8FC /* Wats Hot Posts */,
 				F1618104183BAA0600EF2830 /* Table View Cell */,
 				F1A8655518337F6000975F96 /* Core Data */,
 				F1D1B0E818322FF50075AFC1 /* Google API */,
@@ -205,6 +211,15 @@
 				F193B63F183DEC94008CA8FC /* WatsHotCell.m */,
 			);
 			name = "wat's hot";
+			sourceTree = "<group>";
+		};
+		F193B641183E0C79008CA8FC /* Wats Hot Posts */ = {
+			isa = PBXGroup;
+			children = (
+				F193B642183E127E008CA8FC /* PostFromJSON.h */,
+				F193B643183E127E008CA8FC /* PostFromJSON.m */,
+			);
+			name = "Wats Hot Posts";
 			sourceTree = "<group>";
 		};
 		F19B99C01828F54400D9183D = {
@@ -255,6 +270,7 @@
 				F17B40ED182F82ED007C1E92 /* Controller */,
 				F17B40EC182F82D9007C1E92 /* Model */,
 				F19B99E71828F54400D9183D /* Images.xcassets */,
+				F16EC24F183E42A300C4D857 /* default-image.jpg */,
 				F19B99D31828F54400D9183D /* Supporting Files */,
 				F1A8654918337A9900975F96 /* Model.xcdatamodeld */,
 			);
@@ -442,6 +458,7 @@
 				F1A8656818338F3B00975F96 /* Settings.bundle in Resources */,
 				F19B99E01828F54400D9183D /* Main_iPhone.storyboard in Resources */,
 				F19B99D71828F54400D9183D /* InfoPlist.strings in Resources */,
+				F16EC250183E42A300C4D857 /* default-image.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -496,6 +513,7 @@
 				F1D1BDF0183000D60007094F /* Leg.m in Sources */,
 				F1618107183BAAE700EF2830 /* DirectionCellModel.m in Sources */,
 				F1D1BDF3183008A20007094F /* Step.m in Sources */,
+				F193B644183E127E008CA8FC /* PostFromJSON.m in Sources */,
 				F193B639183D2631008CA8FC /* MapSnapshotsController.m in Sources */,
 				F1A8656618338D5100975F96 /* User.m in Sources */,
 				F1A8654B18337A9900975F96 /* Model.xcdatamodeld in Sources */,

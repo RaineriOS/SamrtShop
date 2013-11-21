@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface WatsHotViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate>
+@property (strong, nonatomic) IBOutlet UICollectionView *collectionView;
 
 @end

@@ -14,6 +14,7 @@
     CLLocationManagerDelegate>
 
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (strong, nonatomic) IBOutlet UITextField *shopNameTextField;
 @property (strong, nonatomic) IBOutlet UITextView *textViewPostContent;
 @property (strong, nonatomic) IBOutlet UIImageView *imageView;
 @property (strong, nonatomic) IBOutlet MKMapView *mapView;

@@ -10,6 +10,7 @@
 
 #import <MapKit/MapKit.h>
 #import <CoreLocation/CoreLocation.h>
+#import <SBJson.h>
 
 #import "LoginViewController.h"
 #import "StepByStepRouteViewController.h"
@@ -100,6 +101,30 @@
             dispatch_sync(dispatch_get_main_queue(), ^{
                 [tableView reloadData];
             });
+            for (GoogleAPIShop *shop in shopController.shopsArr) {
+                NSLog(@"%@ %f %f", shop.SName, shop.location.lat, shop.location.lng);
+                SBJsonWriter *jsonWriter = [[SBJsonWriter alloc] init];
+                NSString *jsonString = [jsonWriter stringWithObject:@{
+                                                                      @"name": shop.SName,
+                                                                      @"lat":[NSString stringWithFormat:@"%f", shop.location.lat],
+                                                                      @"lng":[NSString stringWithFormat:@"%f", shop.location.lng]
+                                                                      }];
+                NSData *postData = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
+                NSString *postLength = [NSString stringWithFormat:@"%d", [postData length]];
+                NSString *urlString = @"http://localhost:3000/shop";
+                NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+                [request setURL:[NSURL URLWithString:urlString]];
+                [request setHTTPMethod:@"POST"];
+                [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
+                [request setValue:@"application/json;charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
+
+                [request setHTTPBody:postData];
+                // send the request (submit the form) and get the response
+                NSData *returnData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
+                NSString *returnString = [[NSString alloc] initWithData:returnData encoding:NSUTF8StringEncoding];
+                
+                NSLog(@"%@", returnString);
+            }
         }];
     }];
 }
