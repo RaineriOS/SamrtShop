@@ -258,16 +258,6 @@
                                             <action selector="tweet:" destination="Y6p-ek-dCc" eventType="touchUpInside" id="rqq-Ww-1Sq"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2tV-DP-gng">
-                                        <rect key="frame" x="139" y="5" width="31" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Map">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <segue destination="q1q-cs-EVW" kind="push" id="Bjv-x6-tiB"/>
-                                        </connections>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aVc-1y-9EV">
                                         <rect key="frame" x="38" y="5" width="32" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -306,25 +296,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wgZ-V9-5rm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1386" y="1033"/>
-        </scene>
-        <!--Get Location Shop View Controller-->
-        <scene sceneID="JrU-dp-X3j">
-            <objects>
-                <viewController id="q1q-cs-EVW" customClass="GetLocationShopViewController" sceneMemberID="viewController">
-                    <mapView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="R1k-iA-CwD">
-                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                    </mapView>
-                    <navigationItem key="navigationItem" id="CY7-jY-n63"/>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
-                    <connections>
-                        <outlet property="mapView" destination="R1k-iA-CwD" id="cwe-hz-TZC"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="UwV-PK-1Rv" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1811" y="1033"/>
         </scene>
         <!--Navigation Controller - Pictures and Comments-->
         <scene sceneID="Op6-at-GX2">

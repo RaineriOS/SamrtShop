@@ -77,7 +77,6 @@
 {
 }
 
-#warning does not work with differnet orientations
 - (void)keyboardDidShow: (NSNotification *) notification
 {
     NSDictionary* keyboardInfo = [notification userInfo];
@@ -239,10 +238,6 @@
     
     NSLog(@"%@", returnString);
 
-}
-
-- (IBAction)pickPosition:(id)sender
-{
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info

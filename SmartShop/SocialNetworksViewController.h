@@ -20,6 +20,5 @@
 - (IBAction)takePicture:(id)sender;
 - (IBAction)tweet:(id)sender;
 - (IBAction)post:(id)sender;
-- (IBAction)pickPosition:(id)sender;
 
 @end
