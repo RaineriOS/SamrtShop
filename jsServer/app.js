@@ -164,15 +164,31 @@ app.post('/post', function (req, res){
 	var imageName = imagePathArr[imagePathArr.length-1];
 });
 
+app.put('/post', function(req, res) {
+	var db = new sqlite3.Database(dbFile);
+	var stmt;
+	if (req.body.field == "hot")
+		stmt = db.prepare("UPDATE posts SET hot=hot+1 WHERE id = ? ");
+	if (req.body.field == "cool")
+		stmt = db.prepare("UPDATE posts SET cool=cool+1 WHERE id = ? ");
+	if (req.body.field == "freezing")
+		stmt = db.prepare("UPDATE posts SET freezing=freezing+1 WHERE id = ? ");
+	stmt.run([req.body.id]);
+	stmt.finalize();
+	db.close();
+	res.json({saved:'success'});
+});
+
 app.get('/post', function(req, res){
 	var db = new sqlite3.Database(dbFile);
-	db.all("SELECT * FROM posts INNER JOIN shops WHERE shops.id == posts.shop_id", function(err, rows) {
+	db.all("SELECT posts.id, posts.user_id, posts.burning, posts.hot, posts.cool, posts.cold, posts.freezing, posts.image_name, posts.content, shops.name, shops.lat, shops.lng FROM posts INNER JOIN shops WHERE shops.id == posts.shop_id", function(err, rows) {
 		// Turn the returned rows which are joined into obejcts which can 
 		// represent objects of posts and shops
 		var posts = [];
 		for (var i=0; i<rows.length; i++) {
 			var row = rows[i];
 			var post = {
+				id: row.id,
 				user_id: row.user_id,
 				burning: row.burning,
 				hot: row.hot,
