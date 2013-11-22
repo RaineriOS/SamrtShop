@@ -46,6 +46,7 @@
 		F1C226F81828FB6D001AB3E8 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1C226F71828FB6D001AB3E8 /* MapKit.framework */; };
 		F1C226FA1828FB75001AB3E8 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1C226F91828FB75001AB3E8 /* CoreLocation.framework */; };
 		F1C226FD1828FDC8001AB3E8 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1C226FC1828FDC8001AB3E8 /* RootViewController.m */; };
+		F1C9B9F4183EDD6000FC5D85 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1C9B9F3183EDD6000FC5D85 /* SettingsViewController.m */; };
 		F1D1BDE4182FC53F0007094F /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = F1D1BDE3182FC53F0007094F /* Photo.m */; };
 		F1D1BDE7182FD3790007094F /* NSMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = F1D1BDE6182FD3790007094F /* NSMapping.m */; };
 		F1D1BDEA182FFE730007094F /* Route.m in Sources */ = {isa = PBXBuildFile; fileRef = F1D1BDE9182FFE730007094F /* Route.m */; };
@@ -126,6 +127,8 @@
 		F1C226FB1828FDC8001AB3E8 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		F1C226FC1828FDC8001AB3E8 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		F1C9B9F1183ED3C700FC5D85 /* UpdateViewDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UpdateViewDelegate.h; sourceTree = "<group>"; };
+		F1C9B9F2183EDD6000FC5D85 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		F1C9B9F3183EDD6000FC5D85 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		F1D1BDE2182FC53F0007094F /* Photo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Photo.h; sourceTree = "<group>"; };
 		F1D1BDE3182FC53F0007094F /* Photo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Photo.m; sourceTree = "<group>"; };
 		F1D1BDE5182FD3790007094F /* NSMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSMapping.h; sourceTree = "<group>"; };
@@ -354,6 +357,8 @@
 			children = (
 				F1A865691833984F00975F96 /* LoginViewController.h */,
 				F1A8656A1833984F00975F96 /* LoginViewController.m */,
+				F1C9B9F2183EDD6000FC5D85 /* SettingsViewController.h */,
+				F1C9B9F3183EDD6000FC5D85 /* SettingsViewController.m */,
 			);
 			name = "Settings Bundle And Login";
 			sourceTree = "<group>";
@@ -537,6 +542,7 @@
 				F1C226FD1828FDC8001AB3E8 /* RootViewController.m in Sources */,
 				F19B99D91828F54400D9183D /* main.m in Sources */,
 				F17B40EB182F82CD007C1E92 /* GoogleAPIShop.m in Sources */,
+				F1C9B9F4183EDD6000FC5D85 /* SettingsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
