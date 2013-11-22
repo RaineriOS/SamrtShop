@@ -59,6 +59,10 @@
     NSData * responseData = [NSURLConnection sendSynchronousRequest:urlRequest
                                                   returningResponse:&returingResponse
                                                               error:&connError];
+    if (!responseData) {
+        // Handle gracefully
+        return;
+    }
     //parse out the json data
     NSError* error;
     NSDictionary* json = [NSJSONSerialization
