@@ -70,6 +70,7 @@
 -(void)resignTextViewPostContentKeyboard:(UIGestureRecognizer *)getureRecognizer
 {
     [self.textViewPostContent resignFirstResponder];
+    [self.shopNameTextField resignFirstResponder];
 }
 
 -(void)viewDidAppear:(BOOL)animated

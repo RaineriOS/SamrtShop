@@ -50,7 +50,7 @@
 		F1C9B9F7183EE21000FC5D85 /* FriendController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1C9B9F6183EE21000FC5D85 /* FriendController.m */; };
 		F1C9B9FA183EE35900FC5D85 /* UserFromJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = F1C9B9F9183EE35900FC5D85 /* UserFromJSON.m */; };
 		F1C9B9FF183EEB9A00FC5D85 /* CustomAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = F1C9B9FE183EEB9A00FC5D85 /* CustomAnnotation.m */; };
-		F1C9BA05183EF0A800FC5D85 /* man.png in Resources */ = {isa = PBXBuildFile; fileRef = F1C9BA04183EF0A800FC5D85 /* man.png */; };
+		F1C9BA05183EF0A800FC5D85 /* person.png in Resources */ = {isa = PBXBuildFile; fileRef = F1C9BA04183EF0A800FC5D85 /* person.png */; };
 		F1D1BDE4182FC53F0007094F /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = F1D1BDE3182FC53F0007094F /* Photo.m */; };
 		F1D1BDE7182FD3790007094F /* NSMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = F1D1BDE6182FD3790007094F /* NSMapping.m */; };
 		F1D1BDEA182FFE730007094F /* Route.m in Sources */ = {isa = PBXBuildFile; fileRef = F1D1BDE9182FFE730007094F /* Route.m */; };
@@ -139,7 +139,7 @@
 		F1C9B9F9183EE35900FC5D85 /* UserFromJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserFromJSON.m; sourceTree = "<group>"; };
 		F1C9B9FD183EEB9A00FC5D85 /* CustomAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomAnnotation.h; sourceTree = "<group>"; };
 		F1C9B9FE183EEB9A00FC5D85 /* CustomAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomAnnotation.m; sourceTree = "<group>"; };
-		F1C9BA04183EF0A800FC5D85 /* man.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = man.png; sourceTree = "<group>"; };
+		F1C9BA04183EF0A800FC5D85 /* person.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = person.png; sourceTree = "<group>"; };
 		F1D1BDE2182FC53F0007094F /* Photo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Photo.h; sourceTree = "<group>"; };
 		F1D1BDE3182FC53F0007094F /* Photo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Photo.m; sourceTree = "<group>"; };
 		F1D1BDE5182FD3790007094F /* NSMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSMapping.h; sourceTree = "<group>"; };
@@ -288,7 +288,7 @@
 				F17B40ED182F82ED007C1E92 /* Controller */,
 				F17B40EC182F82D9007C1E92 /* Model */,
 				F19B99E71828F54400D9183D /* Images.xcassets */,
-				F1C9BA04183EF0A800FC5D85 /* man.png */,
+				F1C9BA04183EF0A800FC5D85 /* person.png */,
 				F16EC24F183E42A300C4D857 /* default-image.jpg */,
 				F19B99D31828F54400D9183D /* Supporting Files */,
 				F1A8654918337A9900975F96 /* Model.xcdatamodeld */,
@@ -484,7 +484,7 @@
 				F19B99E01828F54400D9183D /* Main_iPhone.storyboard in Resources */,
 				F19B99D71828F54400D9183D /* InfoPlist.strings in Resources */,
 				F16EC250183E42A300C4D857 /* default-image.jpg in Resources */,
-				F1C9BA05183EF0A800FC5D85 /* man.png in Resources */,
+				F1C9BA05183EF0A800FC5D85 /* person.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

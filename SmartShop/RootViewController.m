@@ -75,6 +75,11 @@
         LoginViewController *loginViewController = [st instantiateViewControllerWithIdentifier:@"LoginViewController"];
         [self presentViewController:loginViewController animated:YES completion:nil];
     }
+    
+    // When the view of the app is clicked, remove the keyboard if it is active
+    UITapGestureRecognizer *resigneKeyboardTapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(resignKeyboard:)];
+    resigneKeyboardTapRecognizer.numberOfTapsRequired = 1;
+    [self.view addGestureRecognizer:resigneKeyboardTapRecognizer];
 }
 
 - (void)didReceiveMemoryWarning
@@ -187,6 +192,11 @@
 {
     [textField resignFirstResponder];
     return YES;
+}
+
+-(void)resignKeyboard:(UIGestureRecognizer *)getureRecognizer
+{
+    [self.locationTextField resignFirstResponder];
 }
 
 #pragma mark - RootViewDelegate

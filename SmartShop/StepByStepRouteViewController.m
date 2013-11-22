@@ -138,7 +138,7 @@
         }
         
         // set your annotationView properties
-        annotationView.image = [UIImage imageNamed:@"man.png"];
+        annotationView.image = [UIImage imageNamed:@"person.png"];
         annotationView.frame = CGRectMake(0, 0, 30, 30);
         annotationView.canShowCallout = YES;
         
