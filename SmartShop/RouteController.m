@@ -60,8 +60,8 @@
                     if (routesArr.count > i) {
                         [routesArr replaceObjectAtIndex:i withObject:newDirection];
                     }
-                    if ([self.delegate respondsToSelector:@selector(updateTableView)]) {
-                        [self.delegate updateTableView];
+                    if ([self.delegate respondsToSelector:@selector(updateView)]) {
+                        [self.delegate updateView];
                     }
                 } else {
                     NSLog(@"empty");

@@ -125,6 +125,7 @@
 		F1C226F91828FB75001AB3E8 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		F1C226FB1828FDC8001AB3E8 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		F1C226FC1828FDC8001AB3E8 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		F1C9B9F1183ED3C700FC5D85 /* UpdateViewDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UpdateViewDelegate.h; sourceTree = "<group>"; };
 		F1D1BDE2182FC53F0007094F /* Photo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Photo.h; sourceTree = "<group>"; };
 		F1D1BDE3182FC53F0007094F /* Photo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Photo.m; sourceTree = "<group>"; };
 		F1D1BDE5182FD3790007094F /* NSMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSMapping.h; sourceTree = "<group>"; };
@@ -198,6 +199,7 @@
 				F193B63A183DEA85008CA8FC /* wat's hot */,
 				F1A8653E18329E3900975F96 /* Social Networks */,
 				F1A8653D18329E2900975F96 /* Find Shops */,
+				F1C9B9F1183ED3C700FC5D85 /* UpdateViewDelegate.h */,
 			);
 			name = Controller;
 			sourceTree = "<group>";

@@ -14,7 +14,7 @@
 @interface RouteController : NSObject
 
 @property (strong, nonatomic) NSMutableArray *routesArr;
-@property (weak, nonatomic) id<RootViewDelegate> delegate;
+@property (weak, nonatomic) id<UpdateViewDelegate> delegate;
 
 -(id)initWithShops:(NSMutableArray *)shopsArr andLocation:(CLLocationCoordinate2D)origin;
 

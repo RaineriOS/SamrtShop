@@ -93,9 +93,9 @@
         [imagesArr addObject:finalImage];
         if (imagesArr.count > i) {
             [imagesArr replaceObjectAtIndex:i withObject:finalImage];
-            if ([self.delegate respondsToSelector:@selector(updateTableView)]) {
+            if ([self.delegate respondsToSelector:@selector(updateView)]) {
                 dispatch_sync(dispatch_get_main_queue(), ^{
-                    [self.delegate updateTableView];
+                    [self.delegate updateView];
                 });
             }
         }

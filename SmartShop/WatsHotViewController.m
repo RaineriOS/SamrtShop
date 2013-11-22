@@ -101,6 +101,7 @@
         [clothesImageArr addObject:image];
     }
     MapSnapshotsController *snapshotImages = [[MapSnapshotsController alloc] initWithShops:shopsArr withMapView:self.mapView];
+    snapshotImages.delegate = self;
     locationImageArr = snapshotImages.imagesArr;
     [self.collectionView reloadData];
 }
@@ -123,8 +124,9 @@
     cell.clothImageView.image = [clothesImageArr objectAtIndex:indexPath.row];
     if ([[locationImageArr objectAtIndex:indexPath.row] isKindOfClass:[UIImage class]]) {
         cell.locationImageView.image = [locationImageArr objectAtIndex:indexPath.row];
-    } else {
+    } else if (locationImageArr.count < indexPath.row) {
         MapSnapshotsController *snapshotImages = [[MapSnapshotsController alloc] initWithShops:shopsArr withMapView:self.mapView];
+        snapshotImages.delegate = self;
         locationImageArr = snapshotImages.imagesArr;
     }
     return cell;
@@ -135,5 +137,9 @@
     return [postsArr count];
 }
 
+-(void)updateView
+{
+    [self.collectionView reloadData];
+}
 
 @end

@@ -190,7 +190,7 @@
 }
 
 #pragma mark - RootViewDelegate
--(void)updateTableView
+-(void)updateView
 {
     [tableView reloadData];
 }
