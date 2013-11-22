@@ -246,7 +246,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Settings" id="xNX-T5-6sc"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="settings-icon.png" id="xNX-T5-6sc"/>
                     <connections>
                         <outlet property="nameTextField" destination="wea-rf-kS3" id="gcH-GS-PpN"/>
                         <outlet property="showFriends" destination="9EW-6I-NDU" id="WVQ-t9-Xam"/>
@@ -261,7 +261,7 @@
         <scene sceneID="213-bE-nO8">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fkj-qQ-DKM" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Find Shops" id="gkW-Zp-SHT"/>
+                    <tabBarItem key="tabBarItem" title="Find Shops" image="find-shops.png" id="gkW-Zp-SHT"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="8ls-ZF-ZfC">
                         <rect key="frame" x="0.0" y="150" width="320" height="44"/>
@@ -395,7 +395,7 @@
         <scene sceneID="Op6-at-GX2">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="SbM-Ww-skM" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Pictures and Comments" id="nNu-eV-xWD"/>
+                    <tabBarItem key="tabBarItem" title="Pictures and Comments" image="comments.png" id="nNu-eV-xWD"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="wVQ-nz-RKt">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -539,7 +539,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Wats Hot" id="gzi-6m-93W"/>
+                    <tabBarItem key="tabBarItem" title="Wats Hot" image="hot-tab-icon.png" id="gzi-6m-93W"/>
                     <connections>
                         <outlet property="collectionView" destination="D82-38-LEF" id="vdA-g7-7jD"/>
                         <outlet property="mapView" destination="40X-dS-pP9" id="AkN-rv-1WS"/>
@@ -610,10 +610,14 @@
         </scene>
     </scenes>
     <resources>
+        <image name="comments.png" width="30" height="30"/>
         <image name="cool.png" width="256" height="256"/>
         <image name="default-image.jpg" width="460" height="287"/>
+        <image name="find-shops.png" width="30" height="30"/>
         <image name="freezing.png" width="659" height="659"/>
+        <image name="hot-tab-icon.png" width="30" height="30"/>
         <image name="hot.png" width="32" height="32"/>
+        <image name="settings-icon.png" width="30" height="30"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

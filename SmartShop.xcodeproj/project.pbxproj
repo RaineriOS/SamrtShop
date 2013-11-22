@@ -12,6 +12,10 @@
 		F1102DB6182AE378000B3677 /* StepByStepRouteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1102DB5182AE378000B3677 /* StepByStepRouteViewController.m */; };
 		F1618107183BAAE700EF2830 /* DirectionCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F1618106183BAAE700EF2830 /* DirectionCellModel.m */; };
 		F161810A183BCCFB00EF2830 /* ShopController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1618109183BCCFB00EF2830 /* ShopController.m */; };
+		F165338A183F5D57004E43FD /* find-shops.png in Resources */ = {isa = PBXBuildFile; fileRef = F1653389183F5D57004E43FD /* find-shops.png */; };
+		F165338C183F5E3B004E43FD /* comments.png in Resources */ = {isa = PBXBuildFile; fileRef = F165338B183F5E3B004E43FD /* comments.png */; };
+		F165338E183F5EDE004E43FD /* hot-tab-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F165338D183F5EDE004E43FD /* hot-tab-icon.png */; };
+		F1653392183F5F7B004E43FD /* settings-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F1653391183F5F7B004E43FD /* settings-icon.png */; };
 		F16EC250183E42A300C4D857 /* default-image.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F16EC24F183E42A300C4D857 /* default-image.jpg */; };
 		F17B40EB182F82CD007C1E92 /* GoogleAPIShop.m in Sources */ = {isa = PBXBuildFile; fileRef = F17B40EA182F82CD007C1E92 /* GoogleAPIShop.m */; };
 		F193B636183CF8A7008CA8FC /* RouteController.m in Sources */ = {isa = PBXBuildFile; fileRef = F193B635183CF8A7008CA8FC /* RouteController.m */; };
@@ -83,6 +87,10 @@
 		F1618106183BAAE700EF2830 /* DirectionCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DirectionCellModel.m; sourceTree = "<group>"; };
 		F1618108183BCCFB00EF2830 /* ShopController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopController.h; sourceTree = "<group>"; };
 		F1618109183BCCFB00EF2830 /* ShopController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopController.m; sourceTree = "<group>"; };
+		F1653389183F5D57004E43FD /* find-shops.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "find-shops.png"; sourceTree = "<group>"; };
+		F165338B183F5E3B004E43FD /* comments.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = comments.png; sourceTree = "<group>"; };
+		F165338D183F5EDE004E43FD /* hot-tab-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hot-tab-icon.png"; sourceTree = "<group>"; };
+		F1653391183F5F7B004E43FD /* settings-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings-icon.png"; sourceTree = "<group>"; };
 		F16EC24F183E42A300C4D857 /* default-image.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "default-image.jpg"; sourceTree = "<group>"; };
 		F17B40E9182F82CD007C1E92 /* GoogleAPIShop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoogleAPIShop.h; sourceTree = "<group>"; };
 		F17B40EA182F82CD007C1E92 /* GoogleAPIShop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoogleAPIShop.m; sourceTree = "<group>"; };
@@ -299,6 +307,10 @@
 				F1C9BA06183F1EDA00FC5D85 /* hot.png */,
 				F1C9BA0C183F229800FC5D85 /* cool.png */,
 				F1C9BA0A183F222C00FC5D85 /* freezing.png */,
+				F1653389183F5D57004E43FD /* find-shops.png */,
+				F165338B183F5E3B004E43FD /* comments.png */,
+				F165338D183F5EDE004E43FD /* hot-tab-icon.png */,
+				F1653391183F5F7B004E43FD /* settings-icon.png */,
 				F19B99D31828F54400D9183D /* Supporting Files */,
 				F1A8654918337A9900975F96 /* Model.xcdatamodeld */,
 			);
@@ -489,12 +501,16 @@
 			files = (
 				F19B99E31828F54400D9183D /* Main_iPad.storyboard in Resources */,
 				F19B99E81828F54400D9183D /* Images.xcassets in Resources */,
+				F165338E183F5EDE004E43FD /* hot-tab-icon.png in Resources */,
+				F1653392183F5F7B004E43FD /* settings-icon.png in Resources */,
 				F1A8656818338F3B00975F96 /* Settings.bundle in Resources */,
 				F19B99E01828F54400D9183D /* Main_iPhone.storyboard in Resources */,
 				F19B99D71828F54400D9183D /* InfoPlist.strings in Resources */,
 				F1C9BA07183F1EDA00FC5D85 /* hot.png in Resources */,
+				F165338A183F5D57004E43FD /* find-shops.png in Resources */,
 				F1C9BA0D183F229800FC5D85 /* cool.png in Resources */,
 				F16EC250183E42A300C4D857 /* default-image.jpg in Resources */,
+				F165338C183F5E3B004E43FD /* comments.png in Resources */,
 				F1C9BA0B183F222C00FC5D85 /* freezing.png in Resources */,
 				F1C9BA05183EF0A800FC5D85 /* person.png in Resources */,
 			);

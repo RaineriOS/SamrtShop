@@ -62,7 +62,6 @@
     [userDefaults setValue:self.nameTextField.text forKey:@"name"];
     [userDefaults setValue:self.usernameTextField.text forKey:@"username"];
     NSNumber *isSelected = [[NSNumber alloc] initWithBool:self.showFriends.on];
-    NSLog(@"%@", isSelected);
     [userDefaults setValue:isSelected forKey:@"showFriends"];
     [userDefaults synchronize];
     

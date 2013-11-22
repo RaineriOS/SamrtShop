@@ -220,12 +220,23 @@
                                     <action selector="saveSettings:" destination="zMm-Vi-FBg" eventType="touchUpInside" id="aR1-xm-N0x"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Show Friends" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="NeI-UH-Udn">
+                                <rect key="frame" x="229" y="520" width="106" height="21"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="Aff-AT-CV4">
+                                <rect key="frame" x="390" y="515" width="51" height="31"/>
+                            </switch>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Settings" id="ZlK-fd-igv"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="settings-icon.png" id="ZlK-fd-igv"/>
                     <connections>
                         <outlet property="nameTextField" destination="56J-H0-5F8" id="NQr-ar-WKX"/>
+                        <outlet property="showFriends" destination="Aff-AT-CV4" id="0fw-pU-xxP"/>
                         <outlet property="usernameTextField" destination="AeC-Cs-GmJ" id="G78-vK-HLU"/>
                     </connections>
                 </viewController>
@@ -237,7 +248,7 @@
         <scene sceneID="7bx-1B-cD2">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="oCh-bI-6z8" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Find Shops" id="0ar-pL-z19"/>
+                    <tabBarItem key="tabBarItem" title="Find Shops" image="find-shops.png" id="0ar-pL-z19"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="2Ru-Mj-bkX">
                         <rect key="frame" x="0.0" y="150" width="320" height="44"/>
@@ -367,7 +378,7 @@
         <scene sceneID="LFg-u8-qBl">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="VfT-5v-7EK" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Pictures and Comments" id="ELH-iR-R2J"/>
+                    <tabBarItem key="tabBarItem" title="Pictures and Comments" image="comments.png" id="ELH-iR-R2J"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="JiL-ZM-Sav">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -507,7 +518,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Wats Hot" id="6Ph-RS-7P2"/>
+                    <tabBarItem key="tabBarItem" title="Wats Hot" image="hot-tab-icon.png" id="6Ph-RS-7P2"/>
                     <connections>
                         <outlet property="collectionView" destination="XpT-m4-aVI" id="8pI-kp-0ON"/>
                         <outlet property="mapView" destination="ZsP-G0-pne" id="cKh-F5-Z2l"/>
@@ -574,10 +585,14 @@
         </scene>
     </scenes>
     <resources>
+        <image name="comments.png" width="30" height="30"/>
         <image name="cool.png" width="256" height="256"/>
         <image name="default-image.jpg" width="460" height="287"/>
+        <image name="find-shops.png" width="30" height="30"/>
         <image name="freezing.png" width="659" height="659"/>
+        <image name="hot-tab-icon.png" width="30" height="30"/>
         <image name="hot.png" width="32" height="32"/>
+        <image name="settings-icon.png" width="30" height="30"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackOpaque"/>
