@@ -11,6 +11,7 @@
 
 #import "FriendController.h"
 #import "UserFromJSON.h"
+#import "CustomAnnotation.h"
 
 @interface StepByStepRouteViewController ()
 
@@ -116,6 +117,46 @@
     [overlays removeAllObjects];
 }
 
+#pragma mark - MapKitDelegate 
+// Custom annotation
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation
+{
+    if ([annotation isKindOfClass:[MKUserLocation class]]) {
+        return nil;
+    }
+    else if ([annotation isKindOfClass:[CustomAnnotation class]]) {
+        static NSString * const identifier = @"CustomAnnotation";
+        
+        MKAnnotationView* annotationView = [mapView dequeueReusableAnnotationViewWithIdentifier:identifier];
+        
+        if (annotationView) {
+            annotationView.annotation = annotation;
+        }
+        else {
+            annotationView = [[MKAnnotationView alloc] initWithAnnotation:annotation
+                                                          reuseIdentifier:identifier];
+        }
+        
+        // set your annotationView properties
+        annotationView.image = [UIImage imageNamed:@"man.png"];
+        annotationView.frame = CGRectMake(0, 0, 30, 30);
+        annotationView.canShowCallout = YES;
+        
+        // if you add QuartzCore to your project, you can set shadows for your image, too
+        //
+        // [annotationView.layer setShadowColor:[UIColor blackColor].CGColor];
+        // [annotationView.layer setShadowOpacity:1.0f];
+        // [annotationView.layer setShadowRadius:5.0f];
+        // [annotationView.layer setShadowOffset:CGSizeMake(0, 0)];
+        // [annotationView setBackgroundColor:[UIColor whiteColor]];
+        
+        return annotationView;
+    }
+    
+    return nil;
+}
+
+
 
 #pragma mark - UITableViewDataSource
 
@@ -157,10 +198,11 @@
 -(void)updateView
 {
     for (UserFromJSON *friend in friendController.friendsArr) {
-        MKPointAnnotation *annotationView = [[MKPointAnnotation alloc] init];
+        CustomAnnotation *annotationView = [[CustomAnnotation alloc] init];
         annotationView.coordinate = CLLocationCoordinate2DMake(friend.currentLat, friend.currentLng);
         annotationView.title = friend.name;
-        [self.mapView addAnnotation:(id) annotationView];
+        
+        [self.mapView addAnnotation:(id)annotationView];
     }
 }
 
