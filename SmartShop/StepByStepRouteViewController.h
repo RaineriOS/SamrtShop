@@ -16,6 +16,7 @@
 
 @end
 
+// This is the detail of maps
 @interface StepByStepRouteViewController : UIViewController <UpdateViewDelegate, MKMapViewDelegate, UITableViewDataSource, UITableViewDelegate, StepByStepRouteViewDelegate>
 
 // Can be made private
@@ -24,8 +25,10 @@
 @property (strong, nonatomic) IBOutlet MKMapView *mapView;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 
+// Place annotation on the map and zoom onto them
 -(void) placeAnnotationOnMap:(MKPointAnnotation *)annotationView;
 -(void) removeOverlays;
+// Decode the google API encoded string
 + (MKPolyline *)polylineWithEncodedString:(NSString *)encodedString;
 
 @end

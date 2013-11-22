@@ -10,7 +10,7 @@
 #import "GoogleAPIShop.h"
 
 @interface DirectionCellModel : NSObject
-
+// Model represnting the direction cell model returned from the server
 @property (strong, nonatomic) GoogleAPIShop *shop;
 @property (strong, nonatomic) NSString *origin;
 @property (strong, nonatomic) NSString *destination;

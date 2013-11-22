@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface NSMapping : NSObject
-
+// The function which creates objects from a json based on the class, mapping and json turned into dict
 +(id)makeObject:(Class)classType WithMapping:(NSDictionary *)mapping fromJSON:(NSDictionary *)jsonDict;
 
 @end

@@ -10,7 +10,7 @@
 #import "GoogleAPIShop.h"
 
 @interface PostFromJSON : NSObject
-
+// Model reprenting the JSON
 @property (nonatomic, strong) NSNumber * burning;
 @property (nonatomic, strong) NSNumber * cold;
 @property (nonatomic, strong) NSString * content;

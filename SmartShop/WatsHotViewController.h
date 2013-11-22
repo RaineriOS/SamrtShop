@@ -12,7 +12,9 @@
 #import "UpdateViewDelegate.h"
 
 @interface WatsHotViewController : UIViewController <UpdateViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate>
+
 @property (strong, nonatomic) IBOutlet UICollectionView *collectionView;
+// The map view which is used to generate the map images
 @property (strong, nonatomic) IBOutlet MKMapView *mapView;
 
 @end

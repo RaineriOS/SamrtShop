@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
+// The model returned from the server is represented by this
 @interface UserFromJSON : NSObject
 
 @property (nonatomic) double currentLat;

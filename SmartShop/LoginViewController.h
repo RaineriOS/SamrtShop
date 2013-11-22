@@ -10,9 +10,12 @@
 
 @interface LoginViewController : UIViewController
 
+// The name of the user
 @property (strong, nonatomic) IBOutlet UITextField *nameTextField;
+// The username of the user
 @property (strong, nonatomic) IBOutlet UITextField *usernameTextField;
 
+// Save user information in the user defaults
 - (IBAction)saveUserInfo:(id)sender;
 
 @end

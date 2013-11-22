@@ -14,8 +14,9 @@
 @interface RouteController : NSObject
 
 @property (strong, nonatomic) NSMutableArray *routesArr;
-@property (weak, nonatomic) id<UpdateViewDelegate> delegate;
+@property (weak, nonatomic) id<UpdateViewDelegate> delegate; // the delegate used to update 
 
+// Find rouetes for the shops in the shopArr which are of class GoogleAPIShop from the origin given
 -(id)initWithShops:(NSMutableArray *)shopsArr andLocation:(CLLocationCoordinate2D)origin;
 
 @end

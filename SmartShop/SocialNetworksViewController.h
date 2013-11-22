@@ -18,8 +18,12 @@
 @property (strong, nonatomic) IBOutlet UITextView *textViewPostContent;
 @property (strong, nonatomic) IBOutlet UIImageView *imageView;
 @property (strong, nonatomic) IBOutlet MKMapView *mapView;
+
+// Take picture
 - (IBAction)takePicture:(id)sender;
+// Tweet the post using the account stored on the device
 - (IBAction)tweet:(id)sender;
+// Post it to our own server
 - (IBAction)post:(id)sender;
 
 @end
