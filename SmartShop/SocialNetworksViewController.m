@@ -62,7 +62,7 @@
     [self.mapView addGestureRecognizer:recognizer];
     locationManager = [[CLLocationManager alloc] init];
     locationManager.distanceFilter = kCLDistanceFilterNone;
-    locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation; // 100 m
+    locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters; // 100 m
     locationManager.delegate = self;
     [locationManager startUpdatingLocation];
 }
@@ -323,7 +323,7 @@
     MKMapCamera *camera = [MKMapCamera
                            cameraLookingAtCenterCoordinate:annotationView.coordinate
                            fromEyeCoordinate:annotationView.coordinate
-                           eyeAltitude:70000.0];
+                           eyeAltitude:500.0];
     
     [UIView animateWithDuration:1.0 animations:^{
         [self.mapView setCamera:camera];

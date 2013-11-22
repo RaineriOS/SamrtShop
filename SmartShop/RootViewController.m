@@ -77,9 +77,9 @@
     }
     
     // When the view of the app is clicked, remove the keyboard if it is active
-    UITapGestureRecognizer *resigneKeyboardTapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(resignKeyboard:)];
-    resigneKeyboardTapRecognizer.numberOfTapsRequired = 1;
-    [self.view addGestureRecognizer:resigneKeyboardTapRecognizer];
+    // UITapGestureRecognizer *resigneKeyboardTapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(resignKeyboard:)];
+    // resigneKeyboardTapRecognizer.numberOfTapsRequired = 1;
+    // [self.view addGestureRecognizer:resigneKeyboardTapRecognizer];
 }
 
 - (void)didReceiveMemoryWarning
@@ -113,6 +113,7 @@
             imagesArr = snapshotImages.imagesArr;
         }];
     }];
+    [locationTextField resignFirstResponder];
 }
 
 # pragma mark - Map view segue
@@ -186,6 +187,13 @@
     
     return cell;
 }
+
+#pragma mark - UITableViewDelegate
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    // [self performSegueWithIdentifier:@"ShowRoute" sender:self];
+}
+
 
 #pragma mark - UITextFieldDelegate
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
