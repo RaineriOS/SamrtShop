@@ -49,6 +49,7 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
+    // TODO make it run from a differnt thread
     [super viewWillAppear:animated];
     [postsArr removeAllObjects];
     NSString *jsonPath = @"http://localhost:3000/post";
@@ -79,8 +80,12 @@
                                    }, @"location",
                                  nil];
     NSDictionary *postMapping = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                 @"post_id", @"id",
                                  @"image_name", @"image_name",
                                  @"content", @"content",
+                                 @"hot", @"hot",
+                                 @"cool", @"cool",
+                                 @"freezing", @"freezing",
                                  @{
                                    @"property": @"shop", // The name in the class
                                    @"class": [GoogleAPIShop class],
@@ -119,9 +124,15 @@
     
     // cell.backgroundColor=[UIColor greenColor];
     PostFromJSON *post = [postsArr objectAtIndex:indexPath.row];
+    cell.delegate = self;
+    cell.post = post;
+    cell.postId = post.post_id;
     cell.contentLabel.text = post.content;
     cell.shopNameLabel.text = post.shop.SName;
     cell.clothImageView.image = [clothesImageArr objectAtIndex:indexPath.row];
+    cell.hotLabel.text = [NSString stringWithFormat:@"%@", post.hot];
+    cell.coolLabel.text = [NSString stringWithFormat:@"%@", post.cool];
+    cell.freezingLabel.text = [NSString stringWithFormat:@"%@", post.freezing];
     if ([[locationImageArr objectAtIndex:indexPath.row] isKindOfClass:[UIImage class]]) {
         cell.locationImageView.image = [locationImageArr objectAtIndex:indexPath.row];
     } else if (locationImageArr.count < indexPath.row) {
