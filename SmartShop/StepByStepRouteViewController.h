@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
+#import "UpdateViewDelegate.h"
 
 @protocol StepByStepRouteViewDelegate <NSObject>
 
@@ -15,7 +16,7 @@
 
 @end
 
-@interface StepByStepRouteViewController : UIViewController <MKMapViewDelegate, UITableViewDataSource, UITableViewDelegate, StepByStepRouteViewDelegate>
+@interface StepByStepRouteViewController : UIViewController <UpdateViewDelegate, MKMapViewDelegate, UITableViewDataSource, UITableViewDelegate, StepByStepRouteViewDelegate>
 
 // Can be made private
 @property (strong, nonatomic) MKPointAnnotation *pointAnnotation;

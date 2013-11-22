@@ -9,6 +9,9 @@
 #import "StepByStepRouteViewController.h"
 #import "Location.h"
 
+#import "FriendController.h"
+#import "UserFromJSON.h"
+
 @interface StepByStepRouteViewController ()
 
 @property (strong, nonatomic) MKPolyline *routeLine;
@@ -22,6 +25,7 @@
     NSArray *colors;
     NSMutableArray *overlays;
     NSArray *stepsArr;
+    FriendController *friendController;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -82,6 +86,9 @@
         stepsArr = [route steps];
     }];
     
+    friendController = [[FriendController alloc] init];
+    friendController.delegate = self;
+    [friendController searchForFriends];
     [self placeAnnotationOnMap:self.pointAnnotation];
 }
 
@@ -144,6 +151,17 @@
     [UIView animateWithDuration:1.0 animations:^{
         [self.mapView setCamera:camera];
     }];
+}
+
+#pragma mark - UpdateViewDelegate
+-(void)updateView
+{
+    for (UserFromJSON *friend in friendController.friendsArr) {
+        MKPointAnnotation *annotationView = [[MKPointAnnotation alloc] init];
+        annotationView.coordinate = CLLocationCoordinate2DMake(friend.currentLat, friend.currentLng);
+        annotationView.title = friend.name;
+        [self.mapView addAnnotation:(id) annotationView];
+    }
 }
 
 
