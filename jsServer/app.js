@@ -197,5 +197,13 @@ app.get('/post', function(req, res){
 	});
 });
 
+app.get('/user', function (req, res) {
+	var db = new sqlite3.Database(dbFile);
+	db.all("SELECT * FROM users", function(err, rows) {
+		res.json({results:rows});
+	});
+	db.close();
+});
+
 app.listen(3000);
 console.log('Listening on port 3000');
