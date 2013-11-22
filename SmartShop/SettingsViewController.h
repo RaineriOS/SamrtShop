@@ -12,6 +12,7 @@
 @interface SettingsViewController : UIViewController <UITextFieldDelegate>
 @property (strong, nonatomic) IBOutlet UITextField *nameTextField;
 @property (strong, nonatomic) IBOutlet UITextField *usernameTextField;
+@property (strong, nonatomic) IBOutlet UISwitch *showFriends;
 
 // Save the setting into the userdefauls
 - (IBAction)saveSettings:(id)sender;

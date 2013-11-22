@@ -232,12 +232,24 @@
                                     <action selector="saveSettings:" destination="ydT-La-Ciq" eventType="touchUpInside" id="TMC-Rx-qVU"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Show Friends" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7rq-qF-MXh">
+                                <rect key="frame" x="20" y="147" width="106" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9EW-6I-NDU">
+                                <rect key="frame" x="181" y="142" width="51" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </switch>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Settings" id="xNX-T5-6sc"/>
                     <connections>
                         <outlet property="nameTextField" destination="wea-rf-kS3" id="gcH-GS-PpN"/>
+                        <outlet property="showFriends" destination="9EW-6I-NDU" id="WVQ-t9-Xam"/>
                         <outlet property="usernameTextField" destination="S3Q-SL-7Gj" id="SUI-oR-aGp"/>
                     </connections>
                 </viewController>

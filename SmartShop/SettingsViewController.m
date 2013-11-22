@@ -23,18 +23,30 @@
     return self;
 }
 
+// TODO fix it for when application comes from background
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    self.nameTextField.text = [userDefaults valueForKey:@"name"];
-    self.usernameTextField.text = [userDefaults valueForKey:@"username"];
-	// Do any additional setup after loading the view.
-    
+    [self updateViewFromUserDefaults];
     // When the view of the app is clicked, remove the keyboard if it is active
     UITapGestureRecognizer *resigneKeyboardTapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(resignKeyboard:)];
     resigneKeyboardTapRecognizer.numberOfTapsRequired = 1;
     [self.view addGestureRecognizer:resigneKeyboardTapRecognizer];
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [self updateViewFromUserDefaults];
+    [super viewWillAppear:animated];
+}
+
+-(void) updateViewFromUserDefaults
+{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    self.nameTextField.text = [userDefaults valueForKey:@"name"];
+    self.usernameTextField.text = [userDefaults valueForKey:@"username"];
+    BOOL isSelected = [userDefaults boolForKey:@"showFriends"];
+    self.showFriends.on = isSelected;
 }
 
 - (void)didReceiveMemoryWarning
@@ -49,6 +61,10 @@
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     [userDefaults setValue:self.nameTextField.text forKey:@"name"];
     [userDefaults setValue:self.usernameTextField.text forKey:@"username"];
+    NSNumber *isSelected = [[NSNumber alloc] initWithBool:self.showFriends.on];
+    NSLog(@"%@", isSelected);
+    [userDefaults setValue:isSelected forKey:@"showFriends"];
+    [userDefaults synchronize];
     
     [self.nameTextField resignFirstResponder];
     [self.usernameTextField resignFirstResponder];
