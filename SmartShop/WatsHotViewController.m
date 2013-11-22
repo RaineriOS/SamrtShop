@@ -109,6 +109,7 @@
     snapshotImages.delegate = self;
     locationImageArr = snapshotImages.imagesArr;
     [self.collectionView reloadData];
+    [self.mapView setHidden:YES];
 }
 
 - (void)didReceiveMemoryWarning
