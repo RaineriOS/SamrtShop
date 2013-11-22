@@ -11,6 +11,8 @@
 
 @class Post;
 
+// This class is used to save the shop's detail locally in order to
+// avoid sending requests to the server every time something new is created
 @interface Shop : NSManagedObject
 
 @property (nonatomic, retain) NSNumber * lat;

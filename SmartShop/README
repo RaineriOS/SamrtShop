@@ -1,0 +1,35 @@
+So in this project, I have gone through the following points.
+
+-Worked with GoogleAPI and AppleAPI to find shops and routes nearby
+-Used the SBJSon library in order to handle parts of the json serialisation and deserialisation
+-Used core data to store ONLY shops and prevent from sending too many request to the server, the classes could be used to store data later on
+-Used the twitter accounts in order to upload images and post online
+-Created a node.js server for handling requests
+-Used settings bundle in order to get username, name and weather friends should be shown on the map or not
+-Long hold gesture on the map of the SocialNetworksViewController would pick a different location for the shop
+-Single tap gesture on most of the tabs which make sense to resign the keyboard
+-The iPad version is handled pragmatically for all of the tabs and situations
+-Scroll view has been used in the SocialNetworksViewController so when the keyboard appears all of the data can be accessed
+
+What could be added
+-There might be a few places where code can be refracted but did not have enough time to do so
+-Have a more intelligent way of suggesting shop names to users rather than them, typing it in
+-The MapSnapShotsController could have a nib which is it's mapview so other classes don't have to make one and pass it to the class to take snapshots
+-Add a better handling and graceful messages when there is no connection to the server
+
+
+Constraints
+-Apple has a small limit on the number of requests which it handles at a given time
+-Using Google for routing does not return a centered path
+
+
+How to run the server:
+First install node.js and npm (npm should be installed when installing node.js)
+Then using the terminal, go to the jsServer directory and run the following command:
+npm install
+This installs express.js and sqlite (locally) for the server
+Then on line 18 and 19 of app.js, change the path '/Users/macowner/Pictures/smartShop' to somewhere readable and writable.
+and finally run:
+node app.js
+
+The server is now running

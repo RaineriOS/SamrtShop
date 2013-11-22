@@ -16,6 +16,7 @@
 		F165338C183F5E3B004E43FD /* comments.png in Resources */ = {isa = PBXBuildFile; fileRef = F165338B183F5E3B004E43FD /* comments.png */; };
 		F165338E183F5EDE004E43FD /* hot-tab-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F165338D183F5EDE004E43FD /* hot-tab-icon.png */; };
 		F1653392183F5F7B004E43FD /* settings-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F1653391183F5F7B004E43FD /* settings-icon.png */; };
+		F1653394183F62EA004E43FD /* README in Resources */ = {isa = PBXBuildFile; fileRef = F1653393183F62EA004E43FD /* README */; };
 		F16EC250183E42A300C4D857 /* default-image.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F16EC24F183E42A300C4D857 /* default-image.jpg */; };
 		F17B40EB182F82CD007C1E92 /* GoogleAPIShop.m in Sources */ = {isa = PBXBuildFile; fileRef = F17B40EA182F82CD007C1E92 /* GoogleAPIShop.m */; };
 		F193B636183CF8A7008CA8FC /* RouteController.m in Sources */ = {isa = PBXBuildFile; fileRef = F193B635183CF8A7008CA8FC /* RouteController.m */; };
@@ -91,6 +92,7 @@
 		F165338B183F5E3B004E43FD /* comments.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = comments.png; sourceTree = "<group>"; };
 		F165338D183F5EDE004E43FD /* hot-tab-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hot-tab-icon.png"; sourceTree = "<group>"; };
 		F1653391183F5F7B004E43FD /* settings-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings-icon.png"; sourceTree = "<group>"; };
+		F1653393183F62EA004E43FD /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
 		F16EC24F183E42A300C4D857 /* default-image.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "default-image.jpg"; sourceTree = "<group>"; };
 		F17B40E9182F82CD007C1E92 /* GoogleAPIShop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoogleAPIShop.h; sourceTree = "<group>"; };
 		F17B40EA182F82CD007C1E92 /* GoogleAPIShop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoogleAPIShop.m; sourceTree = "<group>"; };
@@ -294,6 +296,7 @@
 		F19B99D21828F54400D9183D /* SmartShop */ = {
 			isa = PBXGroup;
 			children = (
+				F1653393183F62EA004E43FD /* README */,
 				F19B99DB1828F54400D9183D /* AppDelegate.h */,
 				F19B99DC1828F54400D9183D /* AppDelegate.m */,
 				F1A8656718338F3B00975F96 /* Settings.bundle */,
@@ -499,6 +502,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1653394183F62EA004E43FD /* README in Resources */,
 				F19B99E31828F54400D9183D /* Main_iPad.storyboard in Resources */,
 				F19B99E81828F54400D9183D /* Images.xcassets in Resources */,
 				F165338E183F5EDE004E43FD /* hot-tab-icon.png in Resources */,
